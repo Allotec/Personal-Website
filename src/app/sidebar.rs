@@ -60,18 +60,18 @@ fn ConnectWith() -> impl IntoView {
 fn SideBarNavigation() -> impl IntoView {
     view! {
         <div class="flex flex-col mt-10 font-sans items-start justify-top text-gray-100 text-base w-full">
-            <SideBarItem text="Home".into() path="/".into() />
-            <SideBarItem text="Experience".into() path="/experience".into() />
-            <SideBarItem text="Projects".into() path="/projects".into() />
-            <SideBarItem text="About".into() path="/about".into() />
-            <SideBarItem text="Contact".into() path="/contact".into() />
-            <SideBarItem text="Tools".into() path="/tools".into() />
+            <SideBarItem text="Home".into() path="/".into() icon=HouseIcon />
+            <SideBarItem text="Experience".into() path="/experience".into() icon=HouseIcon />
+            <SideBarItem text="Projects".into() path="/projects".into() icon=HouseIcon />
+            <SideBarItem text="About".into() path="/about".into() icon=HouseIcon />
+            <SideBarItem text="Contact".into() path="/contact".into() icon=HouseIcon />
+            <SideBarItem text="Tools".into() path="/tools".into() icon=HouseIcon />
         </div>
     }
 }
 
 #[component]
-fn SideBarItem(text: String, path: String) -> impl IntoView {
+fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoView {
     let current_path = use_location().pathname.get();
     let mut attributes = String::from(
         "flex mt-2 pl-4 pt-2 pb-2 pr-6 text-left rounded-lg text-base align-middle items-center",
@@ -85,7 +85,7 @@ fn SideBarItem(text: String, path: String) -> impl IntoView {
     <a href={path} class="ml-4 w-26/30">
         <div class=attributes>
             <div class="flex flex-row mr-2">
-                <HouseIcon />
+                {icon}
             </div>
             {text}
         </div>
