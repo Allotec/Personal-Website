@@ -74,7 +74,7 @@ fn SideBarNavigation() -> impl IntoView {
 fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoView {
     let current_path = use_location().pathname.get();
     let mut attributes = String::from(
-        "flex mt-2 pl-4 pt-2 pb-2 pr-6 text-left rounded-lg text-base align-middle items-center",
+        "flex mt-2 pl-4 pt-2 pb-2 pr-6 text-left rounded-lg text-base align-middle items-center hover:bg-[rgb(38,40,42)]",
     );
 
     if path == current_path {
@@ -84,9 +84,9 @@ fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoVie
     view! {
     <a href={path} class="ml-4 w-26/30">
         <div class=attributes>
-            <div class="flex flex-row mr-2">
+            <span class="pr-2">
                 {icon}
-            </div>
+            </span>
             {text}
         </div>
     </a>
