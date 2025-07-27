@@ -16,7 +16,7 @@ pub fn App() -> impl IntoView {
         <Router>
             <Routes fallback=|| PageNotFound>
                 <Route path=StaticSegment("") view=HomePage/>
-                <Route path=StaticSegment("/experience") view=ExperiencePage/>
+                <Route path=StaticSegment("/experience") view=PageNotFound/>
 
                 //TODO: Implement these pages
                 <Route path=StaticSegment("/projects") view=PageNotFound/>
@@ -42,7 +42,7 @@ fn HomePage() -> impl IntoView {
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "This is a client-side rendering website template"
+                    "Make a description about yourself"
                 </p>
             </div>
         </div>
