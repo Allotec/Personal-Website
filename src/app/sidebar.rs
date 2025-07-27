@@ -1,3 +1,4 @@
+use crate::icons::*;
 use leptos::prelude::*;
 use leptos::*;
 use leptos_meta::*;
@@ -8,7 +9,7 @@ use log::info;
 #[component]
 pub fn SideBar() -> impl IntoView {
     view! {
-        <div class="flex flex-col items-center w-60 bg-[rgb(28,30,32)] overflow-auto">
+        <div class="flex flex-col items-center w-60 bg-[rgb(28,30,32)] overflow-y-auto">
             <ProfileWTitle />
             <SideBarNavigation />
             <ConnectWith />
@@ -72,15 +73,20 @@ fn SideBarNavigation() -> impl IntoView {
 #[component]
 fn SideBarItem(text: String, path: String) -> impl IntoView {
     let current_path = use_location().pathname.get();
-    let mut attributes = String::from("flex mt-2 pl-4 pt-2 pb-2 pr-6 text-left rounded-lg text-sm");
+    let mut attributes = String::from(
+        "flex mt-2 pl-4 pt-2 pb-2 pr-6 text-left rounded-lg text-base align-middle items-center",
+    );
 
     if path == current_path {
         attributes.push_str(" bg-black border-solid border-1 border-amber-100");
     }
 
     view! {
-    <a href={path} class="ml-4 w-26/30 overflow-auto">
+    <a href={path} class="ml-4 w-26/30">
         <div class=attributes>
+            <div class="flex flex-row mr-2">
+                <HouseIcon />
+            </div>
             {text}
         </div>
     </a>
