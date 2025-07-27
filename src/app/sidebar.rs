@@ -1,6 +1,9 @@
 use leptos::prelude::*;
 use leptos::*;
 use leptos_meta::*;
+use leptos_router::hooks::use_location;
+use log::Record;
+use log::info;
 
 #[component]
 pub fn SideBar() -> impl IntoView {
@@ -30,8 +33,9 @@ fn JobTitleAnimation() -> impl IntoView {
             <div class="flex">
                 "Matthew"
             </div>
+            //TODO: Animate this with a typing animation
             <div class="flex">
-                "Systems Programming"
+                "Systems Programmer"
             </div>
         </div>
     }
@@ -54,7 +58,7 @@ fn ConnectWith() -> impl IntoView {
 #[component]
 fn SideBarNavigation() -> impl IntoView {
     view! {
-        <div class="flex flex-col mt-12 font-sans items-center justify-top tracking-widest text-gray-100 sm:text-lg">
+        <div class="flex flex-col mt-10 font-sans items-start justify-top text-gray-100 text-base w-full">
             <SideBarItem text="Home".into() path="/".into() />
             <SideBarItem text="Experience".into() path="/experience".into() />
             <SideBarItem text="Projects".into() path="/projects".into() />
@@ -67,11 +71,18 @@ fn SideBarNavigation() -> impl IntoView {
 
 #[component]
 fn SideBarItem(text: String, path: String) -> impl IntoView {
+    let current_path = use_location().pathname.get();
+    let mut attributes = String::from("flex mt-2 pl-4 pt-2 pb-2 pr-6 text-left rounded-lg text-sm");
+
+    if path == current_path {
+        attributes.push_str(" bg-black border-solid border-1 border-amber-100");
+    }
+
     view! {
-    <div class="flex">
-        <a href={path} class="hover:underline">
+    <a href={path} class="ml-4 w-26/30 overflow-auto">
+        <div class=attributes>
             {text}
-        </a>
-    </div>
+        </div>
+    </a>
     }
 }
