@@ -35,11 +35,11 @@ fn PageNotFound() -> impl IntoView {
 #[component]
 fn HomePage() -> impl IntoView {
     view! {
-        <div class="flex min-h-screen flex-col bg-stone-950 text-center font-fira-mono text-base text-gray-300">
+        <div class="flex h-screen">
+            <SideBar />
             <div class="flex flex-1 flex-col items-center">
-                <SideBar />
                 <p class="m-auto w-3/4 md:text-xl">
-                    "This is a client-side rendering website template made with "
+                    "This is a client-side rendering website template"
                 </p>
             </div>
         </div>
@@ -50,10 +50,17 @@ fn HomePage() -> impl IntoView {
 fn SideBar() -> impl IntoView {
     view! {
         <div
-            class="inset-x-0 bottom-auto top-0 mt-4 flex items-center justify-center tracking-widest text-amber-200 sm:text-lg">
-            "Bye, Matt!"
+            class="flex items-center justify-center tracking-widest text-white-500 sm:text-lg">
+            <a href="/" class="hover:underline">
+                Home
+            </a>
         </div>
     }
+}
+
+#[component]
+fn SideBarItem() -> impl IntoView {
+    view! {}
 }
 
 #[component]
