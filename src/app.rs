@@ -1,9 +1,12 @@
+mod sidebar;
+
 use leptos::prelude::*;
 use leptos_meta::*;
 use leptos_router::{
     StaticSegment,
     components::{Route, Router, Routes},
 };
+use sidebar::SideBar;
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -37,30 +40,13 @@ fn HomePage() -> impl IntoView {
     view! {
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center">
-                <p class="m-auto w-3/4 md:text-xl">
+            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+                <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "This is a client-side rendering website template"
                 </p>
             </div>
         </div>
     }
-}
-
-#[component]
-fn SideBar() -> impl IntoView {
-    view! {
-        <div
-            class="flex items-center justify-center tracking-widest text-white-500 sm:text-lg">
-            <a href="/" class="hover:underline">
-                Home
-            </a>
-        </div>
-    }
-}
-
-#[component]
-fn SideBarItem() -> impl IntoView {
-    view! {}
 }
 
 #[component]
