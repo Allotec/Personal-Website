@@ -1,19 +1,13 @@
-# 🦀 leptrun
+# Matthew Champagne Personal Website
 
-A CSR website template leveraging
+A CSR website leveraging:
 [Leptos](https://github.com/leptos-rs/leptos),
 [Trunk](https://github.com/trunk-rs/trunk) and
 [Tailwind](https://github.com/tailwindlabs/tailwindcss)
 
-## Generating the Template
+Heavily inspired by [Aman Kumar](https://amankumar.ai/)
 
-This template can be generated using `cargo-generate`:
-
-```
-cargo generate git@github.com:lpnh/leptrun.git
-```
-
-*For additional information, check its [documentation](https://cargo-generate.github.io/cargo-generate/index.html)*
+Template from [leptun](https://github.com/lpnh/leptrun)
 
 ## Setup
 
@@ -39,8 +33,8 @@ Install Trunk:
 cargo install trunk --locked
 ```
 
-*For additional installation options, refer to the [install
-section](https://trunkrs.dev/#install) on Trunk's website*
+_For additional installation options, refer to the [install
+section](https://trunkrs.dev/#install) on Trunk's website_
 
 ### Cargo-make
 
@@ -50,9 +44,9 @@ Install cargo-make:
 cargo install --force cargo-make
 ```
 
-*For additional installation options, refer to the [installation
+_For additional installation options, refer to the [installation
 section](https://github.com/sagiegurari/cargo-make?tab=readme-ov-file#installation)
-on cargo-make repo*
+on cargo-make repo_
 
 ## Usage
 
