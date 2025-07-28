@@ -53,7 +53,37 @@ fn ProfilePic() -> impl IntoView {
 
 #[component]
 fn ConnectWith() -> impl IntoView {
-    view! {}
+    view! {
+        <div class="flex flex-col mt-8 font-sans items-start justify-top text-gray-100 text-base w-full">
+            <div class="flex ml-4"> Connect </div>
+            <ConnectWithItem text="Twitter".into() link="https://twitter.com/alllotec".into() icon=TwitterIcon />
+            <ConnectWithItem text="LinkedIn".into() link="https://www.linkedin.com/in/allotec/".into() icon=LinkedinIcon />
+            <ConnectWithItem text="Github".into() link="https://github.com/Allotec".into() icon=ProjectIcon />
+            <ConnectWithItem text="BlueSky".into() link="https://bsky.app/profile/allotec.bsky.social".into() icon=BlueSkyIcon />
+            <ConnectWithItem text="Instagram".into() link="https://www.instagram.com/alllotec/".into() icon=InstagramIcon />
+        </div>
+    }
+}
+
+#[component]
+fn ConnectWithItem<F: IntoView>(text: String, link: String, icon: F) -> impl IntoView {
+    let attributes = String::from(
+        "flex mt-2 pl-4 pt-2 pb-2 pr-8 text-left rounded-lg text-base align-middle items-center hover:underline",
+    );
+
+    view! {
+    <a href={link} class="ml-2 w-full">
+        <div class=attributes>
+            <span class="pr-2">
+                {icon}
+            </span>
+            {text}
+            <span class="ml-auto">
+                <BoxLinkIcon />
+            </span>
+        </div>
+    </a>
+    }
 }
 
 #[component]
@@ -61,11 +91,11 @@ fn SideBarNavigation() -> impl IntoView {
     view! {
         <div class="flex flex-col mt-10 font-sans items-start justify-top text-gray-100 text-base w-full">
             <SideBarItem text="Home".into() path="/".into() icon=HouseIcon />
-            <SideBarItem text="Experience".into() path="/experience".into() icon=HouseIcon />
-            <SideBarItem text="Projects".into() path="/projects".into() icon=HouseIcon />
-            <SideBarItem text="About".into() path="/about".into() icon=HouseIcon />
-            <SideBarItem text="Contact".into() path="/contact".into() icon=HouseIcon />
-            <SideBarItem text="Tools".into() path="/tools".into() icon=HouseIcon />
+            <SideBarItem text="Experience".into() path="/experience".into() icon=OfficeIcon />
+            <SideBarItem text="Projects".into() path="/projects".into() icon=ProjectIcon />
+            <SideBarItem text="About".into() path="/about".into() icon=UserIcon />
+            <SideBarItem text="Contact".into() path="/contact".into() icon=MailIcon />
+            <SideBarItem text="Tools".into() path="/tools".into() icon=WrenchIcon />
         </div>
     }
 }

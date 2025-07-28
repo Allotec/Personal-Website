@@ -5,9 +5,13 @@ A CSR website leveraging:
 [Trunk](https://github.com/trunk-rs/trunk) and
 [Tailwind](https://github.com/tailwindlabs/tailwindcss)
 
-Heavily inspired by [Aman Kumar](https://amankumar.ai/)
-
 Template from [leptun](https://github.com/lpnh/leptrun)
+
+Icons:
+[HeroIcons](https://heroicons.com/outline)
+[FlowBite](https://flowbite.com/icons/)
+
+Heavily inspired by [Aman Kumar](https://amankumar.ai/)
 
 ## Setup
 
