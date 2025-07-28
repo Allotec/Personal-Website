@@ -13,17 +13,21 @@ pub fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
-        <Router>
-            <Routes fallback=|| PageNotFound>
-                <Route path=StaticSegment("") view=HomePage/>
-                <Route path=StaticSegment("/experience") view=ExperiencePage/>
-                <Route path=StaticSegment("/projects") view=ProjectPage/>
-                <Route path=StaticSegment("/about") view=AboutPage/>
-                <Route path=StaticSegment("/contact") view=ContactPage/>
-                <Route path=StaticSegment("/tools") view=ToolsPage/>
-            </Routes>
-        </Router>
+        <p> "Page was found" </p>
     }
+
+    // view! {
+    //     <Router>
+    //         <Routes fallback=|| PageNotFound>
+    //             <Route path=StaticSegment("") view=HomePage/>
+    //             <Route path=StaticSegment("/experience") view=ExperiencePage/>
+    //             <Route path=StaticSegment("/projects") view=ProjectPage/>
+    //             <Route path=StaticSegment("/about") view=AboutPage/>
+    //             <Route path=StaticSegment("/contact") view=ContactPage/>
+    //             <Route path=StaticSegment("/tools") view=ToolsPage/>
+    //         </Routes>
+    //     </Router>
+    // }
 }
 
 #[component]
