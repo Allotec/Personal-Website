@@ -19,11 +19,11 @@ args = [
     "--release",
     "--minify",
     "--dist",
-    "release",
+    "docs",
     "--public-url",
-    "/personal-web/",
+    "/Personal-Website/",
 ]
 
 [tasks.update-pages]
 command = "git"
-args = ["subtree", "push", "--prefix", "release", "origin", "gh-pages"]
+args = ["subtree", "push", "--prefix", "docs", "origin", "gh-pages"]
