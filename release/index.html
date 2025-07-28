@@ -1,0 +1,8 @@
+<!doctype html><html lang=en><meta charset=utf-8><script type=module>import init, * as bindings from '/Personal-Website/personal-web-fe72d50bb0ec84e1.js';
+const wasm = await init({ module_or_path: '/Personal-Website/personal-web-fe72d50bb0ec84e1_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));</script><link href=/Personal-Website/favicon-f9e69a8900ecc493.ico integrity=sha384-ahDMweIMX3nQU/tfZNnyFXIAg0xsDhNwzo08n4GMdEtlhpvkKyDyreuhR6Hp8YBa rel=icon><link href=/Personal-Website/input-7e5d8636d2d42623.css integrity=sha384-JBocdcMUhfX2cf7QoaW1cnH2oKe6qZRnC1kVGO5uTJ4/gOvLUuDUVJWcZQNZwtDn rel=stylesheet><title>personal-web</title><meta content="width=device-width,initial-scale=1" name=viewport><link crossorigin href=/Personal-Website/personal-web-fe72d50bb0ec84e1.js integrity=sha384-MUK5wc8UTPuvXZs/tdcHwWVzfX8880ApAHnyCBwMl2jOkz4/vfZV91M/XmaB1PYF rel=modulepreload><link as=fetch crossorigin href=/Personal-Website/personal-web-fe72d50bb0ec84e1_bg.wasm integrity=sha384-e2snh4YfNskm5mcSfDIQ3U6gSRjHYVHkwy4+qPxl5ajkRwWkN11NdjyH7Rhr9Fai rel=preload type=application/wasm></head><body></body></html>
