@@ -19,7 +19,9 @@ pub fn SideBar() -> impl IntoView {
 fn ProfileWTitle() -> impl IntoView {
     view! {
         <div class="flex flex-row mt-12 space-x-2 align-start w-full ml-12">
-            <ProfilePic />
+            <a href="/">
+                <ProfilePic />
+            </a>
             <JobTitleAnimation />
         </div>
     }
