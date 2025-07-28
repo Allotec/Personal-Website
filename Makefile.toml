@@ -14,7 +14,15 @@ args = ["serve", "--open"]
 [tasks.run-release]
 dependencies = ["clean-release"]
 command = "trunk"
-args = ["build", "--release", "--minify", "--dist", "docs", "--public-url", "/"]
+args = [
+    "build",
+    "--release",
+    "--minify",
+    "--dist",
+    "docs",
+    "--public-url",
+    "/Personal-Website/",
+]
 
 [tasks.update-pages]
 dependencies = ["run-release"]
