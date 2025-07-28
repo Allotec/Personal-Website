@@ -25,5 +25,6 @@ args = [
 ]
 
 [tasks.update-pages]
+dependencies = ["run-release"]
 command = "git"
 args = ["subtree", "push", "--prefix", "docs", "origin", "gh-pages"]
