@@ -3,8 +3,6 @@ use leptos::prelude::*;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::hooks::use_location;
-use log::Record;
-use log::info;
 
 #[component]
 pub fn SideBar() -> impl IntoView {
@@ -29,16 +27,67 @@ fn ProfileWTitle() -> impl IntoView {
 
 #[component]
 fn JobTitleAnimation() -> impl IntoView {
+    let titles = [
+        "Systems Programmer",
+        "Problem Solver",
+        "Rust Enthusiast",
+        "Embedded Systems",
+    ];
+
     view! {
         <div class="flex flex-col text-gray-100 text-sm">
             <div class="flex">
                 "Matthew"
             </div>
-            //TODO: Animate this with a typing animation
             <div class="flex">
-                "Systems Programmer"
+                <TypingAnimation titles=titles.to_vec() />
             </div>
         </div>
+    }
+}
+
+#[component]
+fn TypingAnimation(titles: Vec<&'static str>) -> impl IntoView {
+    use leptos::*;
+    use std::time::Duration;
+
+    let index = RwSignal::new(0);
+    let char_count = RwSignal::new(0);
+    let typing = RwSignal::new(true);
+    let value = RwSignal::new(titles);
+
+    set_interval(
+        {
+            move || {
+                let current_title = value.get()[index.get()];
+                let chars = current_title.len();
+
+                if typing.get() {
+                    if char_count.get() < chars {
+                        char_count.update(|c| *c += 1);
+                    } else {
+                        typing.set(false);
+                    }
+                } else if char_count.get() > 0 {
+                    char_count.update(|c| *c -= 1);
+                } else {
+                    typing.set(true);
+                    index.update(|i| *i = (*i + 1) % value.get().len());
+                }
+            }
+        },
+        Duration::from_millis(100),
+    );
+
+    view! {
+        <span>
+            {move || {
+                let current = value.get()[index.get()];
+                let chars = char_count.get();
+                current.chars().take(chars).collect::<String>()
+            }}
+            <span class="blinking-cursor">|</span>
+        </span>
     }
 }
 
