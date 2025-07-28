@@ -3,8 +3,8 @@ mod sidebar;
 use leptos::prelude::*;
 use leptos_meta::*;
 use leptos_router::{
-    StaticSegment,
     components::{Route, Router, Routes},
+    path,
 };
 use sidebar::SideBar;
 
@@ -13,21 +13,17 @@ pub fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
-        <p> "Page was found" </p>
+        <Router>
+            <Routes fallback=|| PageNotFound>
+                <Route path=path!("") view=HomePage/>
+                <Route path=path!("/experience") view=ExperiencePage/>
+                <Route path=path!("/projects") view=ProjectPage/>
+                <Route path=path!("/about") view=AboutPage/>
+                <Route path=path!("/contact") view=ContactPage/>
+                <Route path=path!("/tools") view=ToolsPage/>
+            </Routes>
+        </Router>
     }
-
-    // view! {
-    //     <Router>
-    //         <Routes fallback=|| PageNotFound>
-    //             <Route path=StaticSegment("") view=HomePage/>
-    //             <Route path=StaticSegment("/experience") view=ExperiencePage/>
-    //             <Route path=StaticSegment("/projects") view=ProjectPage/>
-    //             <Route path=StaticSegment("/about") view=AboutPage/>
-    //             <Route path=StaticSegment("/contact") view=ContactPage/>
-    //             <Route path=StaticSegment("/tools") view=ToolsPage/>
-    //         </Routes>
-    //     </Router>
-    // }
 }
 
 #[component]
