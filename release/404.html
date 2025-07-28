@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/" />
+    <script>
+      // Try to preserve the path for client-side routing
+      var l = window.location;
+      var url = "/" + l.pathname.replace(/^\/+/, "") + l.search + l.hash;
+      window.location.replace(url);
+    </script>
+  </head>
+  <body>
+    <h1>Redirecting…</h1>
+  </body>
+</html>
