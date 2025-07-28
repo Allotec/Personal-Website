@@ -15,12 +15,12 @@ pub fn App() -> impl IntoView {
     view! {
         <Router>
             <Routes fallback=|| PageNotFound>
-                <Route path=path!("") view=HomePage/>
-                <Route path=path!("/experience") view=ExperiencePage/>
-                <Route path=path!("/projects") view=ProjectPage/>
-                <Route path=path!("/about") view=AboutPage/>
-                <Route path=path!("/contact") view=ContactPage/>
-                <Route path=path!("/tools") view=ToolsPage/>
+                <Route path=path!("/") view=HomePage/>
+                // <Route path=path!("/experience") view=ExperiencePage/>
+                // <Route path=path!("/projects") view=ProjectPage/>
+                // <Route path=path!("/about") view=AboutPage/>
+                // <Route path=path!("/contact") view=ContactPage/>
+                // <Route path=path!("/tools") view=ToolsPage/>
             </Routes>
         </Router>
     }
