@@ -21,7 +21,7 @@ args = [
     "--dist",
     "release",
     "--public-url",
-    "/Personal-Website/",
+    "/",
 ]
 
 [tasks.update-pages]
