@@ -14,15 +14,7 @@ args = ["serve", "--open"]
 [tasks.run-release]
 dependencies = ["clean-release"]
 command = "trunk"
-args = [
-    "build",
-    "--release",
-    "--minify",
-    "--dist",
-    "docs",
-    "--public-url",
-    "/allotec.dev",
-]
+args = ["build", "--release", "--minify", "--dist", "docs", "--public-url", "/"]
 
 [tasks.update-pages]
 dependencies = ["run-release"]
