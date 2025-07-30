@@ -6,6 +6,7 @@ use leptos_router::hooks::use_location;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::Closure;
 
+//TODO: Need logic to look good on mobile
 #[component]
 pub fn SideBar() -> impl IntoView {
     let zoom = get_zoom_signal();
@@ -28,8 +29,8 @@ pub fn SideBar() -> impl IntoView {
 #[component]
 fn VerticalSideBar() -> impl IntoView {
     view! {
-        <div class="flex flex-col items-center w-60 bg-[rgb(28,30,32)]">
-            <ProfileWTitle />
+        <div class="flex flex-col pt-12 items-center w-60 bg-[rgb(28,30,32)]">
+            <ProfileWTitle margin_class="ml-12"/>
             <SideBarNavigation />
             <ConnectWith />
         </div>
@@ -39,16 +40,23 @@ fn VerticalSideBar() -> impl IntoView {
 #[component]
 fn HorizontalSideBar() -> impl IntoView {
     view! {
-        <div class="fixed top-0 left-0 w-full z-50 flex flex-col items-start bg-[rgb(28,30,32)]">
-            <ProfileWTitle />
+        <div class="fixed top-0 left-0 w-full z-50 flex flex-col pt-3 pb-3 items-start bg-[rgb(28,30,32)]">
+            <div class="flex flex-row w-full items-center">
+                <ProfileWTitle margin_class="ml-6"/>
+
+                <div class="flex ml-auto mr-6 align-middle">
+                    <HamburgerIcon />
+                </div>
+
+            </div>
         </div>
     }
 }
 
 #[component]
-fn ProfileWTitle() -> impl IntoView {
+fn ProfileWTitle(margin_class: &'static str) -> impl IntoView {
     view! {
-        <div class="flex flex-row mt-12 space-x-2 align-start w-full ml-12">
+        <div class=format!("flex flex-row space-x-2 align-start w-full {}", margin_class)>
             <a href="/">
                 <ProfilePic />
             </a>
@@ -216,4 +224,12 @@ fn get_zoom_signal() -> RwSignal<f64> {
         .unwrap();
     closure.forget();
     zoom
+}
+
+fn screen_width() -> i32 {
+    window()
+        .inner_width()
+        .ok()
+        .and_then(|v| v.as_f64())
+        .unwrap_or(1024.0) as i32
 }
