@@ -44,7 +44,7 @@ fn HorizontalSideBar() -> impl IntoView {
             <div class="flex flex-row w-full items-center">
                 <ProfileWTitle margin_class="ml-6"/>
 
-                <div class="flex ml-auto mr-6 align-middle">
+                <div class="flex ml-auto mr-5 align-middle hover:bg-[rgb(38,40,42)] pl-2 pr-2 pt-2 pb-2 rounded-lg">
                     <HamburgerIcon />
                 </div>
 
