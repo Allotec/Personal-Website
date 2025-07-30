@@ -29,7 +29,10 @@ pub fn SideBar() -> impl IntoView {
 #[component]
 fn VerticalSideBar() -> impl IntoView {
     view! {
-        <div class="flex flex-col pt-12 items-center w-60 bg-[rgb(28,30,32)]">
+        <div
+            class="flex flex-col pt-12 items-center w-60 bg-[rgb(28,30,32)] h-full overflow-y-auto overflow-x-hidden"
+            style="scrollbar-width: auto; scrollbar-color: #444 #222;"
+        >
             <ProfileWTitle margin_class="ml-12"/>
             <SideBarNavigation />
             <ConnectWith />

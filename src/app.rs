@@ -9,7 +9,8 @@ use leptos_router::{
 };
 use sidebar::SideBar;
 
-const MAIN_PAGE_STYLES: &str = "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] text-gray-200";
+const MAIN_PAGE_STYLES: &str =
+    "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] h-full text-gray-200";
 
 #[component]
 pub fn App() -> impl IntoView {
