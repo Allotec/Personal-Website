@@ -39,14 +39,28 @@ fn VerticalSideBar() -> impl IntoView {
 
 #[component]
 fn HorizontalSideBar() -> impl IntoView {
+    let (dropdown_open, set_dropdown_open) = signal(false);
+
     view! {
         <div class="fixed top-0 left-0 w-full z-50 flex flex-col pt-3 pb-3 items-start bg-[rgb(28,30,32)]">
             <div class="flex flex-row w-full items-center">
                 <ProfileWTitle margin_class="ml-6"/>
 
-                <div class="flex ml-auto mr-5 align-middle hover:bg-[rgb(38,40,42)] pl-2 pr-2 pt-2 pb-2 rounded-lg">
+                <div
+                    class="flex ml-auto mr-5 align-middle hover:bg-[rgb(38,40,42)] pl-2 pr-2 pt-2 pb-2 rounded-lg cursor-pointer"
+                    on:click=move |_| set_dropdown_open.update(|open| *open = !*open)
+                >
                     <HamburgerIcon />
                 </div>
+
+
+                <Show
+                    when=move || {dropdown_open.get()}
+                >
+                    <div class="fixed top-0 left-0 h-full z-60 bg-[rgb(28,30,32)]">
+                        <VerticalSideBar />
+                    </div>
+                </Show>
 
             </div>
         </div>
@@ -147,7 +161,7 @@ fn ConnectWith() -> impl IntoView {
             <div class="flex ml-4"> Connect </div>
             <ConnectWithItem text="Twitter".into() link="https://twitter.com/alllotec".into() icon=TwitterIcon />
             <ConnectWithItem text="LinkedIn".into() link="https://www.linkedin.com/in/allotec/".into() icon=LinkedinIcon />
-            <ConnectWithItem text="Github".into() link="https://github.com/Allotec".into() icon=ProjectIcon />
+            <ConnectWithItem text="Github".into() link="https://github.com/Allotec".into() icon=GithubIcon />
             <ConnectWithItem text="BlueSky".into() link="https://bsky.app/profile/allotec.bsky.social".into() icon=BlueSkyIcon />
             <ConnectWithItem text="Instagram".into() link="https://www.instagram.com/alllotec/".into() icon=InstagramIcon />
         </div>
