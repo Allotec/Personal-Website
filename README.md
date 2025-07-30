@@ -10,6 +10,8 @@ Template from [leptun](https://github.com/lpnh/leptrun)
 Icons:
 [HeroIcons](https://heroicons.com/outline)
 [FlowBite](https://flowbite.com/icons/)
+[Icons8](https://icons8.com/)
+[Web Icon](https://icons8.com/icon/LUbIEvW7Ltnu/microprocessor)
 
 Heavily inspired by [Aman Kumar](https://amankumar.ai/)
 

@@ -36,6 +36,7 @@ fn PageNotFound() -> impl IntoView {
 #[component]
 fn HomePage() -> impl IntoView {
     view! {
+        <Title text="Home - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
@@ -50,6 +51,7 @@ fn HomePage() -> impl IntoView {
 #[component]
 fn ExperiencePage() -> impl IntoView {
     view! {
+        <Title text="Experience - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
@@ -64,6 +66,7 @@ fn ExperiencePage() -> impl IntoView {
 #[component]
 fn ProjectPage() -> impl IntoView {
     view! {
+        <Title text="Projects - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
@@ -78,6 +81,7 @@ fn ProjectPage() -> impl IntoView {
 #[component]
 fn AboutPage() -> impl IntoView {
     view! {
+        <Title text="About - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
@@ -92,6 +96,7 @@ fn AboutPage() -> impl IntoView {
 #[component]
 fn ContactPage() -> impl IntoView {
     view! {
+        <Title text="Contact - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
@@ -106,6 +111,7 @@ fn ContactPage() -> impl IntoView {
 #[component]
 fn ToolsPage() -> impl IntoView {
     view! {
+        <Title text="Tools - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
             <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
