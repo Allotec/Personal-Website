@@ -1,3 +1,4 @@
+mod homepage;
 mod sidebar;
 
 use leptos::prelude::*;
@@ -31,7 +32,17 @@ pub fn App() -> impl IntoView {
 #[component]
 fn PageNotFound() -> impl IntoView {
     view! {
-        <p> "Page not Found" </p>
+        <div class="flex flex-1 flex-col items-center justify-center min-h-screen bg-[rgb(00,00,09)] text-gray-200">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" class="mb-6">
+                <circle cx="60" cy="60" r="55" stroke="#e53e3e" stroke-width="8" fill="#1c1e20"/>
+                <text x="50%" y="54%" text-anchor="middle" fill="#e53e3e" font-size="48" font-weight="bold" dy=".3em">404</text>
+            </svg>
+            <h1 class="text-4xl font-bold text-red-500 mb-2">Page Not Found</h1>
+            <p class="text-white-500 text-lg mb-4 text-center">
+                Oops! The page you are looking for does not exist.
+            </p>
+            <a href="/" class="text-blue-400 hover:underline text-base">Go back home</a>
+        </div>
     }
 }
 
