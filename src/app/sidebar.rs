@@ -3,14 +3,44 @@ use leptos::prelude::*;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::hooks::use_location;
+use wasm_bindgen::JsCast;
+use wasm_bindgen::prelude::Closure;
 
 #[component]
 pub fn SideBar() -> impl IntoView {
+    let zoom = get_zoom_signal();
+
     view! {
-        <div class="flex flex-col items-center w-60 bg-[rgb(28,30,32)] overflow-y-auto">
+        <Show
+            when=move || {zoom.get() <= 1.5}
+        >
+            <VerticalSideBar />
+        </Show>
+
+        <Show
+            when=move || {zoom.get() > 1.5}
+        >
+            <HorizontalSideBar />
+        </Show>
+    }
+}
+
+#[component]
+fn VerticalSideBar() -> impl IntoView {
+    view! {
+        <div class="flex flex-col items-center w-60 bg-[rgb(28,30,32)]">
             <ProfileWTitle />
             <SideBarNavigation />
             <ConnectWith />
+        </div>
+    }
+}
+
+#[component]
+fn HorizontalSideBar() -> impl IntoView {
+    view! {
+        <div class="fixed top-0 left-0 w-full z-50 flex flex-col items-start bg-[rgb(28,30,32)]">
+            <ProfileWTitle />
         </div>
     }
 }
@@ -172,4 +202,18 @@ fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoVie
         </div>
     </a>
     }
+}
+
+fn get_zoom_signal() -> RwSignal<f64> {
+    let zoom = RwSignal::new(window().device_pixel_ratio());
+    let closure = Closure::wrap(Box::new(move || {
+        let ratio = window().device_pixel_ratio();
+        zoom.set(ratio);
+    }) as Box<dyn FnMut()>);
+
+    window()
+        .add_event_listener_with_callback("resize", closure.as_ref().unchecked_ref())
+        .unwrap();
+    closure.forget();
+    zoom
 }

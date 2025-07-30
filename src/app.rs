@@ -8,6 +8,8 @@ use leptos_router::{
 };
 use sidebar::SideBar;
 
+const MAIN_PAGE_STYLES: &str = "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] text-gray-200";
+
 #[component]
 pub fn App() -> impl IntoView {
     provide_meta_context();
@@ -39,7 +41,7 @@ fn HomePage() -> impl IntoView {
         <Title text="Home - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+            <div class=MAIN_PAGE_STYLES>
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "Under Construction"
                 </p>
@@ -54,7 +56,7 @@ fn ExperiencePage() -> impl IntoView {
         <Title text="Experience - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+            <div class=MAIN_PAGE_STYLES>
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "Under Construction"
                 </p>
@@ -69,7 +71,7 @@ fn ProjectPage() -> impl IntoView {
         <Title text="Projects - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+            <div class=MAIN_PAGE_STYLES>
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "Under Construction"
                 </p>
@@ -84,7 +86,7 @@ fn AboutPage() -> impl IntoView {
         <Title text="About - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+            <div class=MAIN_PAGE_STYLES>
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "Under Construction"
                 </p>
@@ -99,7 +101,7 @@ fn ContactPage() -> impl IntoView {
         <Title text="Contact - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+            <div class=MAIN_PAGE_STYLES>
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "Under Construction"
                 </p>
@@ -114,7 +116,7 @@ fn ToolsPage() -> impl IntoView {
         <Title text="Tools - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class="flex flex-1 flex-col items-center bg-[rgb(20,22,23)] text-gray-200">
+            <div class=MAIN_PAGE_STYLES>
                 <p class="m-auto w-3/4 md:text-xl text-white-500">
                     "Under Construction"
                 </p>
