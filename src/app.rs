@@ -1,7 +1,15 @@
+mod about;
+mod contact;
+mod experience;
 mod footer;
 mod homepage;
+mod project;
 mod sidebar;
+mod tools;
 
+use about::AboutPageContent;
+use contact::ContactPageContent;
+use experience::ExperiencePageContent;
 use homepage::HomePageContent;
 use leptos::prelude::*;
 use leptos_meta::*;
@@ -9,7 +17,9 @@ use leptos_router::{
     components::{Route, Router, Routes},
     path,
 };
+use project::ProjectPageContent;
 use sidebar::SideBar;
+use tools::ToolsPageContent;
 
 pub(crate) const MAIN_PAGE_CLASS: &str = "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] h-full text-gray-200 pt-25 overflow-y-auto overflow-x-hidden";
 pub(crate) const MAIN_PAGE_STYLES: &str = "scrollbar-width: auto; scrollbar-color: #444 #222;";
@@ -66,11 +76,7 @@ fn ExperiencePage() -> impl IntoView {
         <Title text="Experience - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class=MAIN_PAGE_CLASS>
-                <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "Under Construction"
-                </p>
-            </div>
+            <ExperiencePageContent />
         </div>
     }
 }
@@ -81,11 +87,7 @@ fn ProjectPage() -> impl IntoView {
         <Title text="Projects - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class=MAIN_PAGE_CLASS>
-                <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "Under Construction"
-                </p>
-            </div>
+            <ProjectPageContent />
         </div>
     }
 }
@@ -96,11 +98,7 @@ fn AboutPage() -> impl IntoView {
         <Title text="About - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class=MAIN_PAGE_CLASS>
-                <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "Under Construction"
-                </p>
-            </div>
+            <AboutPageContent />
         </div>
     }
 }
@@ -111,11 +109,7 @@ fn ContactPage() -> impl IntoView {
         <Title text="Contact - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class=MAIN_PAGE_CLASS>
-                <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "Under Construction"
-                </p>
-            </div>
+            <ContactPageContent />
         </div>
     }
 }
@@ -126,11 +120,7 @@ fn ToolsPage() -> impl IntoView {
         <Title text="Tools - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class=MAIN_PAGE_CLASS>
-                <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "Under Construction"
-                </p>
-            </div>
+            <ToolsPageContent />
         </div>
     }
 }
