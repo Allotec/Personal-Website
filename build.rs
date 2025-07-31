@@ -6,11 +6,13 @@ fn main() {
         .status()
         .expect("Failed to execute pdflatex command");
 
-    std::fs::copy(
-        "./Matthew_Champagne_Resume.pdf",
-        "./public/Matthew_Champagne_Resume.pdf",
-    )
-    .unwrap();
+    Command::new("sed")
+        .arg(r"'/\/ID \[/d'")
+        .arg("./Matthew_Champagne_Resume.pdf")
+        .arg(">")
+        .arg("public/Matthew_Champagne_Resume.pdf")
+        .status()
+        .expect("Failed to execute sed command");
 
     std::fs::remove_file("./Matthew_Champagne_Resume.pdf").unwrap();
 }
