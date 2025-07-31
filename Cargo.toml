@@ -3,6 +3,7 @@ name = "personal-web"
 authors = ["Matthew Champagne <mchampagne@orbitintl.com>"]
 version = "0.1.0"
 edition = "2024"
+build = "build.rs"
 
 [dependencies]
 leptos = { version = "0.8.2", features = ["csr"] }
