@@ -10,7 +10,7 @@ fn main() {
         .arg(r"'/\/ID \[/d'")
         .arg("./Matthew_Champagne_Resume.pdf")
         .arg(">")
-        .arg("public/Matthew_Champagne_Resume.pdf")
+        .arg("public/docs/Matthew_Champagne_Resume.pdf")
         .status()
         .expect("Failed to execute sed command");
 
