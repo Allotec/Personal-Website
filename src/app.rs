@@ -1,6 +1,7 @@
 mod homepage;
 mod sidebar;
 
+use homepage::HomePageContent;
 use leptos::prelude::*;
 use leptos_meta::*;
 use leptos_router::{
@@ -9,8 +10,8 @@ use leptos_router::{
 };
 use sidebar::SideBar;
 
-const MAIN_PAGE_STYLES: &str =
-    "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] h-full text-gray-200";
+pub(crate) const MAIN_PAGE_STYLES: &str =
+    "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] h-full text-gray-200 pt-25";
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -53,11 +54,7 @@ fn HomePage() -> impl IntoView {
         <Title text="Home - Matthew Champagne" />
         <div class="flex h-screen">
             <SideBar />
-            <div class=MAIN_PAGE_STYLES>
-                <p class="m-auto w-3/4 md:text-xl text-white-500">
-                    "Under Construction"
-                </p>
-            </div>
+            <HomePageContent />
         </div>
     }
 }
