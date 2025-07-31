@@ -1,12 +1,18 @@
-use crate::MAIN_PAGE_STYLES;
+use crate::app::footer::CopyrightFooter;
+use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
-use leptos_meta::*;
+use leptos::*;
 
 #[component]
 pub(crate) fn HomePageContent() -> impl IntoView {
     view! {
-        <div class=MAIN_PAGE_STYLES>
+        <div
+            class=MAIN_PAGE_CLASS
+            style=MAIN_PAGE_STYLES
+        >
             <BigNameTitle />
+            <HomePageMainContent />
+            <CopyrightFooter />
         </div>
     }
 }
@@ -22,5 +28,12 @@ pub(crate) fn BigNameTitle() -> impl IntoView {
                 "Systems Programmer"
             </div>
         </div>
+    }
+}
+
+#[component]
+fn HomePageMainContent() -> impl IntoView {
+    view! {
+        <p> "Main Content of the homepage goes here." </p>
     }
 }
