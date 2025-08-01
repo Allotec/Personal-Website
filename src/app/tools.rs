@@ -16,6 +16,14 @@ pub(crate) fn ToolsPageContent() -> impl IntoView {
     }
 }
 
+// TODO: Tools to callout
+// Neovim
+// Copilot
+// latex
+// Rust
+// Tailscale
+// Arch Linux
+
 #[component]
 fn ToolsPageMainContent() -> impl IntoView {
     view! {
