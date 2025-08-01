@@ -102,19 +102,34 @@ fn EmailButton() -> impl IntoView {
         copy,
     } = use_clipboard();
 
-    let on_click = move |_| {
+    let (copied_state, set_copied_state) = signal(false);
+
+    let on_click = {
         let copy = copy.clone();
-        if is_supported.get() {
-            copy("champagne7103@gmail.com")
+        move |_| {
+            if is_supported.get() {
+                copy("champagne7103@gmail.com");
+                set_copied_state.set(true);
+                set_timeout(
+                    move || set_copied_state.set(false),
+                    std::time::Duration::from_secs(3),
+                );
+            }
         }
     };
 
     view! {
         <button
-            class=BUTTON_STYLE
+            class=move || {
+                if copied_state.get() {
+                    format!("{BUTTON_STYLE} border-green-500")
+                } else {
+                    BUTTON_STYLE.to_string()
+                }
+            }
             on:click=on_click
         >
-            "E-Mail"
+            {move || if copied_state.get() { "Copied!" } else { "E-Mail" }}
         </button>
     }
 }
