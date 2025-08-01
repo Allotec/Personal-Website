@@ -57,8 +57,8 @@ fn HomePageMainParagraph() -> impl IntoView {
 
             <HomePageParagraph flex=false>
                 <span>"Come Say Hi on "</span>
-                <a class="underline font-bold" href="https://orbitintl.com/">
-                    "X"
+                <a class="underline font-bold" href="https://www.linkedin.com/in/allotec/">
+                    "LinkedIn"
                 </a>
             </HomePageParagraph>
 
