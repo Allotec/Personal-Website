@@ -23,6 +23,7 @@ use tools::ToolsPageContent;
 
 pub(crate) const MAIN_PAGE_CLASS: &str = "flex flex-1 flex-col items-center bg-[rgb(00,00,09)] h-full text-gray-200 pt-25 overflow-y-auto overflow-x-hidden";
 pub(crate) const MAIN_PAGE_STYLES: &str = "scrollbar-width: auto; scrollbar-color: #444 #222;";
+pub(crate) const BUTTON_STYLE: &str = "cursor-pointer flex justify-start text-md pr-4 pl-4 pt-1 pb-1 bg-black border-solid border-1 border-amber-100 rounded-lg hover:bg-[rgb(38,40,42)]";
 
 #[component]
 pub fn App() -> impl IntoView {

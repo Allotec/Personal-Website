@@ -1,3 +1,4 @@
+use crate::app::BUTTON_STYLE;
 use crate::app::footer::CopyrightFooter;
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
@@ -34,13 +35,6 @@ pub(crate) fn BigNameTitle() -> impl IntoView {
 
 #[component]
 fn HomePageMainParagraph() -> impl IntoView {
-    let UseClipboardReturn {
-        is_supported,
-        text,
-        copied,
-        copy,
-    } = use_clipboard();
-
     view! {
         <div class="flex flex-col font-sans space-y-4 items-center w-9/10 max-w-2xl text-base mt-5">
             <HomePageParagraph>
@@ -68,32 +62,59 @@ fn HomePageMainParagraph() -> impl IntoView {
                 </a>
             </HomePageParagraph>
 
-            <a href="/contact">
-                <button class="cursor-pointer flex justify-start text-md pr-4 pl-4 pt-1 pb-1 bg-black border-solid border-1 border-amber-100 rounded-lg hover:bg-[rgb(38,40,42)]">
-                    "Contact"
-                </button>
-            </a>
-
-            <a href="/docs/Matthew_Champagne_Resume.pdf" download>
-                <button class="cursor-pointer flex justify-start text-md pr-4 pl-4 pt-1 pb-1 bg-black border-solid border-1 border-amber-100 rounded-lg hover:bg-[rgb(38,40,42)]">
-                    "Resume"
-                </button>
-            </a>
-
-            <button
-                class="cursor-pointer flex justify-start text-md pr-4 pl-4 pt-1 pb-1 bg-black border-solid border-1 border-amber-100 rounded-lg hover:bg-[rgb(38,40,42)]"
-                on:click={ let copy = copy.clone(); move |_| copy("champagne7103@gmail.com") }
-            >
-                "E-Mail"
-            </button>
-
+            <ContactButton />
+            <ResumeDownload />
+            <EmailButton />
         </div>
     }
 }
 
 #[component]
-fn HomePageParagraphButtons() -> impl IntoView {
-    view! {}
+fn ContactButton() -> impl IntoView {
+    view! {
+        <a href="/contact">
+            <button class= BUTTON_STYLE>
+                "Contact"
+            </button>
+        </a>
+    }
+}
+
+#[component]
+fn ResumeDownload() -> impl IntoView {
+    view! {
+        <a href="/docs/Matthew_Champagne_Resume.pdf" download>
+            <button class= BUTTON_STYLE>
+                "Contact"
+            </button>
+        </a>
+    }
+}
+
+#[component]
+fn EmailButton() -> impl IntoView {
+    let UseClipboardReturn {
+        is_supported,
+        text,
+        copied,
+        copy,
+    } = use_clipboard();
+
+    let on_click = move |_| {
+        let copy = copy.clone();
+        if is_supported.get() {
+            copy("champagne7103@gmail.com")
+        }
+    };
+
+    view! {
+        <button
+            class=BUTTON_STYLE
+            on:click=on_click
+        >
+            "E-Mail"
+        </button>
+    }
 }
 
 #[component]
