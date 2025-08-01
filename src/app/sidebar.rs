@@ -86,9 +86,11 @@ fn ProfileWTitle(margin_class: &'static str) -> impl IntoView {
 fn JobTitleAnimation() -> impl IntoView {
     let titles = [
         "Systems Programmer",
-        "Problem Solver",
         "Rust Enthusiast",
+        "Problem Solver",
+        "Neovim Enjoyer",
         "Embedded Systems",
+        "Arch BTW",
     ];
 
     view! {
@@ -112,10 +114,14 @@ fn TypingAnimation(titles: Vec<&'static str>) -> impl IntoView {
     let char_count = RwSignal::new(0);
     let typing = RwSignal::new(true);
     let value = RwSignal::new(titles);
+    let is_paused = RwSignal::new(false);
 
     set_interval(
         {
             move || {
+                if is_paused.get() {
+                    return;
+                }
                 let current_title = value.get()[index.get()];
                 let chars = current_title.len();
 
@@ -124,6 +130,8 @@ fn TypingAnimation(titles: Vec<&'static str>) -> impl IntoView {
                         char_count.update(|c| *c += 1);
                     } else {
                         typing.set(false);
+                        is_paused.set(true);
+                        set_timeout(move || is_paused.set(false), Duration::from_millis(1750));
                     }
                 } else if char_count.get() > 0 {
                     char_count.update(|c| *c -= 1);
