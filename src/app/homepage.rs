@@ -85,7 +85,7 @@ fn ContactButton() -> impl IntoView {
 #[component]
 fn ResumeDownload() -> impl IntoView {
     view! {
-        <a href="/docs/Matthew_Champagne_Resume.pdf" download>
+        <a href="docs/Matthew_Champagne_Resume.pdf" download>
             <button class= BUTTON_STYLE>
                 "Resume"
             </button>
