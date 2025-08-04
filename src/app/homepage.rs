@@ -1,5 +1,6 @@
-use crate::app::BUTTON_STYLE;
+use crate::app::BUTTON_CLASS;
 use crate::app::footer::CopyrightFooter;
+use crate::app::reused_buttons::{ContactButton, EmailButton, ResumeDownload};
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
 use leptos::*;
@@ -68,69 +69,6 @@ fn HomePageMainParagraph() -> impl IntoView {
                 <EmailButton />
             </div>
         </div>
-    }
-}
-
-#[component]
-fn ContactButton() -> impl IntoView {
-    view! {
-        <a href="/contact">
-            <button class= BUTTON_STYLE>
-                "Contact"
-            </button>
-        </a>
-    }
-}
-
-#[component]
-fn ResumeDownload() -> impl IntoView {
-    view! {
-        <a href="docs/Matthew_Champagne_Resume.pdf" download>
-            <button class= BUTTON_STYLE>
-                "Resume"
-            </button>
-        </a>
-    }
-}
-
-#[component]
-fn EmailButton() -> impl IntoView {
-    let UseClipboardReturn {
-        is_supported,
-        text,
-        copied,
-        copy,
-    } = use_clipboard();
-
-    let (copied_state, set_copied_state) = signal(false);
-
-    let on_click = {
-        let copy = copy.clone();
-        move |_| {
-            if is_supported.get() {
-                copy("champagne7103@gmail.com");
-                set_copied_state.set(true);
-                set_timeout(
-                    move || set_copied_state.set(false),
-                    std::time::Duration::from_secs(3),
-                );
-            }
-        }
-    };
-
-    view! {
-        <button
-            class=move || {
-                if copied_state.get() {
-                    format!("{BUTTON_STYLE} border-green-500")
-                } else {
-                    BUTTON_STYLE.to_string()
-                }
-            }
-            on:click=on_click
-        >
-            {move || if copied_state.get() { "Copied!" } else { "E-Mail" }}
-        </button>
     }
 }
 

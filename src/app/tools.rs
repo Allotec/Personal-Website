@@ -1,4 +1,5 @@
 use crate::app::footer::CopyrightFooter;
+use crate::app::page_heading::PageHeading;
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
 use leptos::tachys::view;
@@ -41,13 +42,13 @@ const TOOLS: [Tool; 6] = [
     Tool {
         logo_path: "images/Gitlab.svg",
         logo_name: "Gitlab",
-        logo_category: "Self Hosting",
+        logo_category: "Self-Hosted Git",
         url: "https://gitlab.com/",
     },
     Tool {
         logo_path: "images/Arch.svg",
         logo_name: "Arch Linux",
-        logo_category: "OS",
+        logo_category: "Operating System",
         url: "https://archlinux.org/",
     },
 ];
@@ -60,24 +61,15 @@ pub(crate) fn ToolsPageContent() -> impl IntoView {
             style=MAIN_PAGE_STYLES
         >
             <div>
-                <ToolsPageMainContent />
+                <PageHeading
+                    main_title="Tools"
+                    main_color="text-white-100"
+                    subtitle="Tools I frequently use to make life easier"
+                    sub_color="text-grey-100"
+                />
                 <ToolsGrid />
             </div>
             <CopyrightFooter />
-        </div>
-    }
-}
-
-#[component]
-fn ToolsPageMainContent() -> impl IntoView {
-    view! {
-        <div class="flex flex-col font-sans space-y-4 max-w-2xl w-full mx-auto">
-            <div class="flex text-white-100 text-base sm:text-3xl md:text-4xl lg:text-5xl font-sans font-semibold justify-start w-full">
-                "Tools"
-            </div>
-            <div class="flex text-grey-100 text-base justify-start w-full">
-                "Tools I frequently use to make life easier"
-            </div>
         </div>
     }
 }
