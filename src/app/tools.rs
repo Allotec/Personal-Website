@@ -4,13 +4,53 @@ use leptos::prelude::*;
 use leptos::tachys::view;
 use leptos::*;
 
-// TODO: Tools to callout
-// Neovim ->  https://neovim.io/
-// Rust -> https://www.rust-lang.org/
-// latex -> https://www.latex-project.org/
-// Copilot -> https://github.com/features/copilot
-// Tailscale -> https://tailscale.com/
-// Arch Linux -> https://archlinux.org/
+#[derive(Clone)]
+struct Tool {
+    logo_path: &'static str,
+    logo_name: &'static str,
+    logo_category: &'static str,
+    url: &'static str,
+}
+
+// Matches grid size
+const TOOLS: [Tool; 6] = [
+    Tool {
+        logo_path: "images/Neovim.svg",
+        logo_name: "Neovim",
+        logo_category: "Editor",
+        url: "https://neovim.io/",
+    },
+    Tool {
+        logo_path: "images/Rust.svg",
+        logo_name: "Rust",
+        logo_category: "Language",
+        url: "https://www.rust-lang.org/",
+    },
+    Tool {
+        logo_path: "images/Latex.svg",
+        logo_name: "LaTeX",
+        logo_category: "Typesetting",
+        url: "https://www.latex-project.org/",
+    },
+    Tool {
+        logo_path: "images/Git.svg",
+        logo_name: "Git",
+        logo_category: "Source Control",
+        url: "https://git-scm.com/",
+    },
+    Tool {
+        logo_path: "images/Gitlab.svg",
+        logo_name: "Gitlab",
+        logo_category: "Self Hosting",
+        url: "https://gitlab.com/",
+    },
+    Tool {
+        logo_path: "images/Arch.svg",
+        logo_name: "Arch Linux",
+        logo_category: "OS",
+        url: "https://archlinux.org/",
+    },
+];
 
 #[component]
 pub(crate) fn ToolsPageContent() -> impl IntoView {
@@ -44,50 +84,15 @@ fn ToolsPageMainContent() -> impl IntoView {
 
 #[component]
 fn ToolsGrid() -> impl IntoView {
-    let tools = vec![
-        (
-            "images/Neovim.svg",
-            "Neovim",
-            "Editor",
-            "https://neovim.io/",
-        ),
-        (
-            "images/Rust.svg",
-            "Rust",
-            "Language",
-            "https://www.rust-lang.org/",
-        ),
-        (
-            "images/Latex.svg",
-            "LaTeX",
-            "Typesetting",
-            "https://www.latex-project.org/",
-        ),
-        (
-            "images/Git.svg",
-            "Git",
-            "Source Control",
-            "https://git-scm.com/",
-        ),
-        (
-            "images/Gitlab.svg",
-            "Gitlab",
-            "Self Hosting",
-            "https://gitlab.com/",
-        ),
-        (
-            "images/Arch.svg",
-            "Arch Linux",
-            "OS",
-            "https://archlinux.org/",
-        ),
-    ];
-
     view! {
         <div class="grid grid-cols-2 grid-rows-3 gap-6 mt-8">
-            {tools.into_iter().map(|(logo, name, cat, url)| view! {
-                <a href=url target="_blank" rel="noopener noreferrer">
-                    <ToolButton logo_path=logo.to_string() logo_name=name.to_string() logo_catagory=cat.to_string() />
+            {TOOLS.iter().map(|tool| view! {
+                <a href=tool.url target="_blank" rel="noopener noreferrer">
+                    <ToolButton
+                        logo_path=tool.logo_path.to_string()
+                        logo_name=tool.logo_name.to_string()
+                        logo_catagory=tool.logo_category.to_string()
+                    />
                 </a>
             }).collect::<Vec<_>>()}
         </div>
