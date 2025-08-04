@@ -97,7 +97,7 @@ fn ToolsGrid() -> impl IntoView {
 #[component]
 fn ToolButton(logo_path: String, logo_name: String, logo_catagory: String) -> impl IntoView {
     view! {
-        <div class="flex flex-row border border-amber-100 rounded-lg pl-4 pt-4 pb-4 pr-10">
+        <div class="flex flex-row border hover:bg-[rgb(30,32,34)] rounded-lg pl-4 pt-4 pb-4 pr-10" style="border-color:rgba(255,248,225,0.3);">
             <img src=logo_path.clone() alt=logo_name.clone() class="bg-white h-12 w-12 mb-2" style="width:48px;" />
             <div class="flex flex-col ml-3">
                 <div class="flex">{logo_name}</div>
