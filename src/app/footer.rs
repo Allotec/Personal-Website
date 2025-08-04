@@ -7,7 +7,7 @@ use leptos_use::use_timestamp;
 #[component]
 pub(crate) fn CopyrightFooter() -> impl IntoView {
     view! {
-        <footer class="flex w-full py-4 mt-auto bg-[rgb(0, 0, 9)] border-t border-t-amber-100 border-t-[1px]">
+        <footer class="flex w-full py-4 mt-auto bg-[rgb(0, 0, 9)] border-t border-t-[1px]" style="border-color:rgba(255,248,225,0.5);">
             <div class="flex w-full text-[#B8B8B1] text-center items-center justify-between px-4">
                 <a class="hover:underline sm:text-base md:text-base lg:text-xs" href="/contact">
                     "Reach out →"

@@ -222,12 +222,12 @@ fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoVie
     );
 
     if path == current_path {
-        attributes.push_str(" bg-black border-solid border-1 border-amber-100");
+        attributes.push_str(" bg-black border-solid border-1");
     }
 
     view! {
     <a href={path} class="ml-4 w-26/30">
-        <div class=attributes>
+        <div class=attributes style="border-color:rgba(255,248,225,0.6);">
             <span class="pr-2">
                 {icon}
             </span>
