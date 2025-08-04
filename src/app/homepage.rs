@@ -62,7 +62,7 @@ fn HomePageMainParagraph() -> impl IntoView {
                 </a>
             </HomePageParagraph>
 
-            <div class="flex flex-row space-x-3 justify-start w-full mt-4">
+            <div class="flex flex-row space-x-3 justify-start w-full mt-4 mb-6">
                 <ContactButton />
                 <ResumeDownload />
                 <EmailButton />
