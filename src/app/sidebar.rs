@@ -13,13 +13,13 @@ pub fn SideBar() -> impl IntoView {
 
     view! {
         <Show
-            when=move || {zoom.get() <= 1.5}
+            when=move || {zoom.get() <= 1.25}
         >
             <VerticalSideBar />
         </Show>
 
         <Show
-            when=move || {zoom.get() > 1.5}
+            when=move || {zoom.get() > 1.25}
         >
             <HorizontalSideBar />
         </Show>
@@ -73,7 +73,7 @@ fn HorizontalSideBar() -> impl IntoView {
 #[component]
 fn ProfileWTitle(margin_class: &'static str) -> impl IntoView {
     view! {
-        <div class=format!("flex flex-row space-x-2 align-start w-full {}", margin_class)>
+        <div class=format!("flex flex-row space-x-2 align-start w-full {margin_class}")>
             <a href="/">
                 <ProfilePic />
             </a>
