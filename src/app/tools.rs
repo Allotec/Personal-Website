@@ -77,7 +77,7 @@ pub(crate) fn ToolsPageContent() -> impl IntoView {
 #[component]
 fn ToolsGrid() -> impl IntoView {
     view! {
-        <div class="grid grid-cols-2 grid-rows-3 gap-6 mt-8">
+        <div class="grid grid-cols-2 grid-rows-3 gap-6 mt-8 mb-10">
             {TOOLS.iter().map(|tool| view! {
                 <a href=tool.url target="_blank" rel="noopener noreferrer">
                     <ToolButton
