@@ -18,3 +18,4 @@ console_error_panic_hook = { version = "0.1.7" }
 chrono = "0.4.41"
 leptos-use = "0.16.2"
 chrono-tz = "0.10.4"
+js-sys = "0.3.77"

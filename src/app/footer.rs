@@ -1,6 +1,12 @@
+use std::str::FromStr;
+
 use chrono::{TimeZone, Utc};
 use chrono_tz::America::New_York;
+use chrono_tz::Tz;
+use js_sys::Reflect;
+use js_sys::{Array, Intl, Object};
 use leptos::prelude::*;
+use leptos::wasm_bindgen::JsValue;
 use leptos::*;
 use leptos_use::use_timestamp;
 
@@ -25,17 +31,28 @@ pub(crate) fn CopyrightFooter() -> impl IntoView {
 
 #[component]
 fn CurrentTime() -> impl IntoView {
+    let timezone = Tz::from_str(get_browser_timezone().as_str()).unwrap();
     let timestamp = use_timestamp();
 
     view! {
         <div class="sm:text-base md:text-base lg:text-xs">
-            {move || format_time(timestamp.get())}
+            {move || format_time(timestamp.get(), timezone)}
         </div>
     }
 }
 
-fn format_time(unix_time: f64) -> String {
+fn format_time(unix_time: f64, timezone: Tz) -> String {
     let datetime_utc = Utc.timestamp_millis_opt(unix_time as i64).unwrap();
-    let datetime_est = datetime_utc.with_timezone(&New_York);
+    let datetime_est = datetime_utc.with_timezone(&timezone);
     datetime_est.format("%I:%M:%S %p").to_string()
+}
+
+fn get_browser_timezone() -> String {
+    let locales = Array::new();
+    let options = Object::new();
+    let intl = Intl::DateTimeFormat::new(&locales, &options);
+    let resolved = intl.resolved_options();
+    let tz =
+        Reflect::get(&resolved, &JsValue::from_str("timeZone")).unwrap_or(JsValue::from_str("UTC"));
+    tz.as_string().unwrap_or_else(|| "UTC".to_string())
 }
