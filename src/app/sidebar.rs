@@ -249,11 +249,3 @@ fn get_zoom_signal() -> RwSignal<f64> {
     closure.forget();
     zoom
 }
-
-fn screen_width() -> i32 {
-    window()
-        .inner_width()
-        .ok()
-        .and_then(|v| v.as_f64())
-        .unwrap_or(1024.0) as i32
-}

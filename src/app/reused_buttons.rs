@@ -52,10 +52,7 @@ pub fn ReachOutForCall() -> impl IntoView {
 #[component]
 fn EmailCopyButton(idle_text: String) -> impl IntoView {
     let UseClipboardReturn {
-        is_supported,
-        text,
-        copied,
-        copy,
+        is_supported, copy, ..
     } = use_clipboard();
 
     let (copied_state, set_copied_state) = signal(false);
