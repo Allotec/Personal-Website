@@ -37,6 +37,20 @@ pub fn ResumeDownload() -> impl IntoView {
 
 #[component]
 pub fn EmailButton() -> impl IntoView {
+    view! {
+        <EmailCopyButton idle_text="E-Mail".to_string() />
+    }
+}
+
+#[component]
+pub fn ReachOutForCall() -> impl IntoView {
+    view! {
+        <EmailCopyButton idle_text="Reach Out For Call".to_string() />
+    }
+}
+
+#[component]
+fn EmailCopyButton(idle_text: String) -> impl IntoView {
     let UseClipboardReturn {
         is_supported,
         text,
@@ -83,7 +97,7 @@ pub fn EmailButton() -> impl IntoView {
                 when=move || {!copied_state.get()}
             >
                 <ClipboardDocument />
-                <span class="ml-1">"E-Mail"</span>
+                <span class="ml-1">{idle_text.clone()}</span>
             </Show>
 
             <Show

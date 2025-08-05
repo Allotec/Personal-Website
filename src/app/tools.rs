@@ -60,7 +60,7 @@ pub(crate) fn ToolsPageContent() -> impl IntoView {
             class=MAIN_PAGE_CLASS
             style=MAIN_PAGE_STYLES
         >
-            <div>
+            <div class="m-4">
                 <PageHeading
                     main_title="Tools"
                     main_color="text-white-100"
