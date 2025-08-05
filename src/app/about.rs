@@ -50,7 +50,7 @@ pub(crate) fn AboutPageContent() -> impl IntoView {
                 {PARAGRAPHS.iter().map(|p| view! {
                     <AboutParagraph title=p.title contens=p.content />
                 }).collect::<Vec<_>>()}
-                <div class="flex flex-row space-x-3 justify-start w-full mt-4 mb-6">
+                <div class="flex flex-row space-x-3 justify-start w-full mt-7 mb-6">
                     <ContactButton />
                     <EmailButton />
                 </div>

@@ -56,7 +56,7 @@ fn ExperiencePageMainContent() -> impl IntoView {
             />
 
             <div class="flex flex-row items-center space-x-2">
-                <a class="hover:underline flex items-center space-x-2" href="docs/Matthew_Champagne_Resume.pdf" download>
+                <a class="hover:underline flex items-center space-x-1" href="docs/Matthew_Champagne_Resume.pdf" download>
                     <div class="text-white-100 text-lg">
                         "View Full Resume"
                     </div>
