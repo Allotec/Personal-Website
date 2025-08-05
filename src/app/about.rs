@@ -3,7 +3,6 @@ use crate::app::page_heading::PageHeading;
 use crate::app::reused_buttons::{ContactButton, EmailButton, LabelTag};
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
-use leptos::*;
 
 struct Paragraph {
     title: &'static str,

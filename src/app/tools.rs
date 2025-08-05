@@ -2,8 +2,6 @@ use crate::app::footer::CopyrightFooter;
 use crate::app::page_heading::PageHeading;
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
-use leptos::tachys::view;
-use leptos::*;
 
 #[derive(Clone)]
 struct Tool {

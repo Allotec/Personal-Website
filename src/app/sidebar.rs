@@ -1,7 +1,6 @@
 use crate::icons::*;
 use leptos::prelude::*;
 use leptos::*;
-use leptos_meta::*;
 use leptos_router::hooks::use_location;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::Closure;

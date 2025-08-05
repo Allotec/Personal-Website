@@ -1,10 +1,7 @@
-use crate::app::BUTTON_CLASS;
 use crate::app::footer::CopyrightFooter;
 use crate::app::reused_buttons::{ContactButton, EmailButton, ResumeDownload};
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
-use leptos::*;
-use leptos_use::{UseClipboardReturn, use_clipboard};
 
 #[component]
 pub(crate) fn HomePageContent() -> impl IntoView {

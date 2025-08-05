@@ -1,7 +1,6 @@
 use crate::app::footer::CopyrightFooter;
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
-use leptos::*;
 
 #[component]
 pub(crate) fn ProjectPageContent() -> impl IntoView {

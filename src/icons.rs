@@ -1,6 +1,4 @@
 use leptos::prelude::*;
-use leptos::*;
-use leptos_meta::*;
 
 #[component]
 pub(crate) fn HouseIcon() -> impl IntoView {
