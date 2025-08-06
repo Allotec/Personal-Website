@@ -14,13 +14,10 @@ pub(crate) fn ProjectPageContent() -> impl IntoView {
                 <PageHeading
                     main_title="Projects"
                     main_color="text-white-100"
-                    subtitle="Playground"
+                    subtitle="Playground - Small Scripts to Big Apps"
                     sub_color="text-white-100"
                 />
-                // <ProjectGrid />
-                <ProjectTile
-                    img_path="images/profile.jpg".to_string()
-                />
+                <ProjectGrid />
             </div>
             <CopyrightFooter />
         </div>
@@ -30,32 +27,103 @@ pub(crate) fn ProjectPageContent() -> impl IntoView {
 #[component]
 fn ProjectGrid() -> impl IntoView {
     view! {
-        <p> "Project Content goes here." </p>
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ExampleTile />
+            <ExampleTile />
+            <ExampleTile />
+            <ExampleTile />
+            <ExampleTile />
+        </div>
+    }
+}
+
+#[component]
+fn ExampleTile() -> impl IntoView {
+    view! {
+        <ProjectTile
+            img_path="images/screenshot.jpg".to_string()
+            title="Project Title".to_string()
+            description="This is a project description".to_string()
+            tags=vec!["Visit".to_string(), "Github".to_string()]
+            host_site="https://google.com".to_string()
+            is_active=true
+        />
     }
 }
 
 #[component]
 fn ProjectTile(
     img_path: String,
-    // title: String,
-    // description: String,
-    // host_site: String,
-    // status: bool,
+    title: String,
+    description: String,
+    tags: Vec<String>,
+    host_site: String,
+    is_active: bool,
 ) -> impl IntoView {
     view! {
-        <div class="flex flex-col bg-[rgb(28,30,32)] rounded-lg p-3">
-            <img src=img_path class="flex rounded-lg w-full object-cover" />
+        <a href={host_site}>
+        <div class="flex flex-col bg-[rgb(28,30,32)] rounded-lg p-3 hover:scale-103">
+            <img src=img_path class="flex rounded-lg w-full object-cover mb-2" />
             <div class="flex text-white-100 text-base font-semibold">
-                "Project Title"
+                {title}
             </div>
             <div class="flex text-stone-300 text-sm">
-                "This is a project description"
+                {description}
             </div>
-            <div class="flex flex-row mt-2">
-                <div class="text-white-100 bg-black pl-2 pr-2 border rounded-lg" style="border-color:rgba(255,248,225,0.5);">
-                    "Visit"
+            <div class="flex flex-row mt-2 space-x-2 justify-between items-center">
+                <div class="flex space-x-2">
+                    {tags.iter().map(|text| view! {
+                        <TileTag text=text.clone() />
+                    }).collect::<Vec<_>>()}
                 </div>
+
+            <StatusTag is_active=is_active />
             </div>
+        </div>
+        </a>
+    }
+}
+
+#[component]
+fn TileTag(text: String) -> impl IntoView {
+    view! {
+        <div class="text-white-100 bg-black pl-2 pr-2 border rounded-lg" style="border-color:rgba(255,248,225,0.5);">
+            {text}
+        </div>
+    }
+}
+
+#[component]
+fn StatusTag(is_active: bool) -> impl IntoView {
+    view! {
+        <Show
+            when=move || {is_active}
+        >
+            <ActiveTag />
+        </Show>
+
+        <Show
+            when=move || {!is_active}
+        >
+            <ArchivedTag />
+        </Show>
+    }
+}
+
+#[component]
+fn ActiveTag() -> impl IntoView {
+    view! {
+        <div class="text-white-100 bg-green-900 pl-2 pr-2 rounded-full">
+            "Active"
+        </div>
+    }
+}
+
+#[component]
+fn ArchivedTag() -> impl IntoView {
+    view! {
+        <div class="text-white-100 bg-[rgb(38,40,42)] pl-2 pr-2 rounded-full">
+            "Archived"
         </div>
     }
 }
