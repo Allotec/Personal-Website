@@ -237,9 +237,13 @@ fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoVie
 }
 
 fn get_zoom_signal() -> RwSignal<f64> {
-    let zoom = RwSignal::new(window().device_pixel_ratio());
+    let zoom = RwSignal::new(
+        window().outer_width().unwrap().as_f64().unwrap()
+            / window().inner_width().unwrap().as_f64().unwrap(),
+    );
     let closure = Closure::wrap(Box::new(move || {
-        let ratio = window().device_pixel_ratio();
+        let ratio = window().outer_width().unwrap().as_f64().unwrap()
+            / window().inner_width().unwrap().as_f64().unwrap();
         zoom.set(ratio);
     }) as Box<dyn FnMut()>);
 
