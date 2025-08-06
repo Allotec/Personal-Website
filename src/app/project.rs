@@ -3,8 +3,80 @@ use crate::app::page_heading::PageHeading;
 use crate::{MAIN_PAGE_CLASS, app::MAIN_PAGE_STYLES};
 use leptos::prelude::*;
 
+struct ProjectInfo {
+    img_path: String,
+    title: String,
+    description: String,
+    tags: Vec<String>,
+    host_site: String,
+    is_active: bool,
+}
+
+impl ProjectInfo {
+    fn new(
+        img_path: &str,
+        title: &str,
+        description: &str,
+        tags: Vec<String>,
+        host_site: &str,
+        is_active: bool,
+    ) -> Self {
+        Self {
+            img_path: img_path.to_string(),
+            title: title.to_string(),
+            description: description.to_string(),
+            tags,
+            host_site: host_site.to_string(),
+            is_active,
+        }
+    }
+}
+
 #[component]
 pub(crate) fn ProjectPageContent() -> impl IntoView {
+    let projects = vec![
+        ProjectInfo::new(
+            "images/screenshot.jpg",
+            "Project Title",
+            "This is a project description",
+            vec!["Visit".to_string(), "Github".to_string()],
+            "https://google.com",
+            true,
+        ),
+        ProjectInfo::new(
+            "images/screenshot.jpg",
+            "Project Title",
+            "This is a project description",
+            vec!["Visit".to_string(), "Github".to_string()],
+            "https://google.com",
+            true,
+        ),
+        ProjectInfo::new(
+            "images/screenshot.jpg",
+            "Project Title",
+            "This is a project description",
+            vec!["Visit".to_string(), "Github".to_string()],
+            "https://google.com",
+            true,
+        ),
+        ProjectInfo::new(
+            "images/screenshot.jpg",
+            "Project Title",
+            "This is a project description",
+            vec!["Visit".to_string(), "Github".to_string()],
+            "https://google.com",
+            true,
+        ),
+        ProjectInfo::new(
+            "images/screenshot.jpg",
+            "Project Title",
+            "This is a project description",
+            vec!["Visit".to_string(), "Github".to_string()],
+            "https://google.com",
+            true,
+        ),
+    ];
+
     view! {
         <div
             class=MAIN_PAGE_CLASS
@@ -17,7 +89,7 @@ pub(crate) fn ProjectPageContent() -> impl IntoView {
                     subtitle="Playground - Small Scripts to Big Apps"
                     sub_color="text-white-100"
                 />
-                <ProjectGrid />
+                <ProjectGrid projects=projects/>
             </div>
             <CopyrightFooter />
         </div>
@@ -25,29 +97,20 @@ pub(crate) fn ProjectPageContent() -> impl IntoView {
 }
 
 #[component]
-fn ProjectGrid() -> impl IntoView {
+fn ProjectGrid(projects: Vec<ProjectInfo>) -> impl IntoView {
     view! {
         <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <ExampleTile />
-            <ExampleTile />
-            <ExampleTile />
-            <ExampleTile />
-            <ExampleTile />
+            {projects.iter().map(|p| view! {
+                <ProjectTile
+                    img_path=p.img_path.clone()
+                    title=p.title.clone()
+                    description=p.description.clone()
+                    tags=p.tags.clone()
+                    host_site=p.host_site.clone()
+                    is_active=p.is_active
+                />
+            }).collect::<Vec<_>>()}
         </div>
-    }
-}
-
-#[component]
-fn ExampleTile() -> impl IntoView {
-    view! {
-        <ProjectTile
-            img_path="images/screenshot.jpg".to_string()
-            title="Project Title".to_string()
-            description="This is a project description".to_string()
-            tags=vec!["Visit".to_string(), "Github".to_string()]
-            host_site="https://google.com".to_string()
-            is_active=true
-        />
     }
 }
 
