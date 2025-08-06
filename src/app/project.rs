@@ -62,7 +62,7 @@ fn ProjectTile(
 ) -> impl IntoView {
     view! {
         <a href={host_site}>
-        <div class="flex flex-col bg-[rgb(28,30,32)] rounded-lg p-3 hover:scale-103">
+        <div class="flex flex-col bg-[rgb(28,30,32)] rounded-lg p-2 max-w-md max-h-80 overflow-hidden hover:scale-103">
             <img src=img_path class="flex rounded-lg w-full object-cover mb-2" />
             <div class="flex text-white-100 text-base font-semibold">
                 {title}
