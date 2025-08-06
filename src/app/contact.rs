@@ -37,7 +37,8 @@ pub(crate) fn ContactPageContent() -> impl IntoView {
 #[component]
 fn LinkedinWideButton() -> impl IntoView {
     view! {
-        <div class="flex flex-row justify-between items-center p-3 w-full border rounded-lg mt-10 space-x-3" style="border-color:rgba(255,248,225,0.3);">
+        <a class="flex" href="https://www.linkedin.com/in/allotec/">
+        <div class="group flex flex-row justify-between items-center p-3 w-full border rounded-lg mt-10 space-x-3" style="border-color:rgba(255,248,225,0.3);">
             <div class="flex">
                 <LinkedinIconBig />
             </div>
@@ -45,11 +46,10 @@ fn LinkedinWideButton() -> impl IntoView {
                 "Connect with me on Linkedin to keep up with my work"
             </div>
 
-            <a href="https://www.linkedin.com/in/allotec/">
-            <div class="flex bg-black rounded-lg p-2 text-sm">
+            <div class="flex bg-black rounded-lg p-2 text-sm transform transition-transform duration-200 group-hover:scale-110">
                 "Connect"
             </div>
-            </a>
         </div>
+        </a>
     }
 }
