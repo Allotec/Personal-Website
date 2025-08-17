@@ -5,7 +5,7 @@ use leptos_router::hooks::use_location;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::Closure;
 
-fn is_portrait() -> bool {
+pub fn is_portrait() -> bool {
     let win = web_sys::window().unwrap();
     let width = win.inner_width().unwrap().as_f64().unwrap();
     let height = win.inner_height().unwrap().as_f64().unwrap();
@@ -15,7 +15,7 @@ fn is_portrait() -> bool {
 #[component]
 pub fn SideBar() -> impl IntoView {
     let zoom = get_zoom_signal();
-    let (portrait, set_portrait) = create_signal(is_portrait());
+    let (portrait, set_portrait) = signal(is_portrait());
 
     // Update on resize
     window_event_listener(ev::resize, move |_| {

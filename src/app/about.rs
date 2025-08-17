@@ -39,7 +39,7 @@ pub(crate) fn AboutPageContent() -> impl IntoView {
             class=MAIN_PAGE_CLASS
             style=MAIN_PAGE_STYLES
         >
-            <div class="ml-10 mr-10 mb-5">
+        <div class="mx-auto w-full max-w-2xl px-4 sm:px-10 mb-5 items-center">
                 <PageHeading
                     main_title="Matthew"
                     main_color="text-white-100"
@@ -67,7 +67,7 @@ fn AboutParagraph(title: &'static str, contens: &'static str) -> impl IntoView {
             <div class="flex text-white-100 text-lg font-semibold">
                 {title}
             </div>
-            <div class="flex text-white-100">
+            <div class="flex text-white-100 text-wrap">
                 {contens}
             </div>
         </div>
@@ -77,14 +77,12 @@ fn AboutParagraph(title: &'static str, contens: &'static str) -> impl IntoView {
 #[component]
 fn LabelRow() -> impl IntoView {
     view! {
-        <div class="flex flex-row w-full space-x-3 mt-5">
+        <div class="flex flex-row w-full space-x-3 mt-5 overflow-x-auto">
             <LabelTag label="Rust" />
             <LabelTag label="STM32" />
             <LabelTag label="Bash" />
-            <LabelTag label="Lua" />
             <LabelTag label="Linux" />
             <LabelTag label="AVR" />
-            <LabelTag label="Networking" />
         </div>
     }
 }

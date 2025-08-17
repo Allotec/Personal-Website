@@ -8,7 +8,7 @@ pub fn PageHeading(
     sub_color: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class="flex flex-col font-sans space-y-4 max-w-2xl w-full">
+        <div class="flex flex-col font-sans space-y-4 max-w-2xl w-full text-wrap">
             <div class=format!("flex sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-sans font-semibold justify-start w-full {main_color}")>
                 {main_title}
             </div>
