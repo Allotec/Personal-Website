@@ -1,7 +1,6 @@
 use crate::icons::*;
 use leptos::prelude::*;
 use leptos::*;
-use leptos_meta::*;
 use leptos_router::hooks::use_location;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::Closure;
@@ -13,13 +12,13 @@ pub fn SideBar() -> impl IntoView {
 
     view! {
         <Show
-            when=move || {zoom.get() <= 1.5}
+            when=move || {zoom.get() <= 1.25}
         >
             <VerticalSideBar />
         </Show>
 
         <Show
-            when=move || {zoom.get() > 1.5}
+            when=move || {zoom.get() > 1.25}
         >
             <HorizontalSideBar />
         </Show>
@@ -73,7 +72,7 @@ fn HorizontalSideBar() -> impl IntoView {
 #[component]
 fn ProfileWTitle(margin_class: &'static str) -> impl IntoView {
     view! {
-        <div class=format!("flex flex-row space-x-2 align-start w-full {}", margin_class)>
+        <div class=format!("flex flex-row space-x-2 align-start w-full {margin_class}")>
             <a href="/">
                 <ProfilePic />
             </a>
@@ -238,9 +237,13 @@ fn SideBarItem<F: IntoView>(text: String, path: String, icon: F) -> impl IntoVie
 }
 
 fn get_zoom_signal() -> RwSignal<f64> {
-    let zoom = RwSignal::new(window().device_pixel_ratio());
+    let zoom = RwSignal::new(
+        window().outer_width().unwrap().as_f64().unwrap()
+            / window().inner_width().unwrap().as_f64().unwrap(),
+    );
     let closure = Closure::wrap(Box::new(move || {
-        let ratio = window().device_pixel_ratio();
+        let ratio = window().outer_width().unwrap().as_f64().unwrap()
+            / window().inner_width().unwrap().as_f64().unwrap();
         zoom.set(ratio);
     }) as Box<dyn FnMut()>);
 
@@ -249,12 +252,4 @@ fn get_zoom_signal() -> RwSignal<f64> {
         .unwrap();
     closure.forget();
     zoom
-}
-
-fn screen_width() -> i32 {
-    window()
-        .inner_width()
-        .ok()
-        .and_then(|v| v.as_f64())
-        .unwrap_or(1024.0) as i32
 }
