@@ -5,20 +5,32 @@ use leptos_router::hooks::use_location;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::Closure;
 
-//TODO: Need logic to look good on mobile
+fn is_portrait() -> bool {
+    let win = web_sys::window().unwrap();
+    let width = win.inner_width().unwrap().as_f64().unwrap();
+    let height = win.inner_height().unwrap().as_f64().unwrap();
+    height > width
+}
+
 #[component]
 pub fn SideBar() -> impl IntoView {
     let zoom = get_zoom_signal();
+    let (portrait, set_portrait) = create_signal(is_portrait());
+
+    // Update on resize
+    window_event_listener(ev::resize, move |_| {
+        set_portrait.set(is_portrait());
+    });
 
     view! {
         <Show
-            when=move || {zoom.get() <= 1.25}
+            when=move || {zoom.get() <= 1.25 && !portrait.get()}
         >
             <VerticalSideBar />
         </Show>
 
         <Show
-            when=move || {zoom.get() > 1.25}
+            when=move || {zoom.get() > 1.25 || portrait.get()}
         >
             <HorizontalSideBar />
         </Show>
