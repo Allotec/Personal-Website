@@ -12,11 +12,11 @@ use leptos_use::use_timestamp;
 pub(crate) fn CopyrightFooter() -> impl IntoView {
     view! {
         <footer class="flex w-full py-4 mt-auto bg-[rgb(0, 0, 9)] border-t border-t-[1px]" style="border-color:rgba(255,248,225,0.5);">
-            <div class="flex w-full text-[#B8B8B1] text-center items-center justify-between px-4">
-                <a class="hover:underline sm:text-base md:text-base lg:text-xs" href="/contact">
+            <div class="flex w-full text-[#B8B8B1] text-center items-center justify-between px-4 text-sm sm:text-base md:text-base lg:text-xs xl:text-xs">
+                <a class="hover:underline text-sm sm:text-base md:text-base lg:text-xs xl:text-xs" href="/contact">
                     "Reach out →"
                 </a>
-                <div class="sm:text-xs md:text-base lg:text-xs">
+                <div class="text-sm sm:text-xs md:text-base lg:text-xs">
                     "Made by Matt | © 2025"
                 </div>
                 <div>
