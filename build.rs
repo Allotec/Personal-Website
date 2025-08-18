@@ -14,5 +14,7 @@ fn main() {
         .status()
         .expect("Failed to execute sed command");
 
+    std::fs::copy("./release/index.html", "./release/404.html").unwrap();
+
     std::fs::remove_file("./Matthew_Champagne_Resume.pdf").unwrap();
 }
