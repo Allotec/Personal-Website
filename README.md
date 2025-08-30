@@ -1,4 +1,4 @@
-# Matthew Champagne Personal Website
+# [Matthew Champagne Personal Website](https://allotec.dev)
 
 A CSR website leveraging:
 [Leptos](https://github.com/leptos-rs/leptos),
