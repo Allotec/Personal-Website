@@ -40,11 +40,11 @@ fn HomePageMainParagraph() -> impl IntoView {
             </HomePageParagraph>
 
             <HomePageParagraph flex=false>
-                <span>"Currently I am working as an Embedded Systems Design Engineer at "</span>
-                <a class="underline" href="https://orbitintl.com/">
-                    "Orbit International Corporation"
+                <span>"Currently I am working as a Senior Software Engineer at "</span>
+                <a class="underline" href="https://gdmissionsystems.com/">
+                    "General Dynamics Mission Systems"
                 </a>
-                <span>" building military HMI devices."</span>
+                <span>" building training equipment for the US military."</span>
             </HomePageParagraph>
 
             <HomePageParagraph flex=false>

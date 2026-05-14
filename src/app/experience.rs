@@ -15,7 +15,7 @@ pub(crate) fn ExperiencePageContent() -> impl IntoView {
             <PageHeading
                 main_title="Changelog from my journey"
                 main_color="text-white-100"
-                subtitle="I'b been working at Orbit for the past 2 years."
+                subtitle="I'b been working at General Dynamics Mission Systems for the past year."
                 sub_color="text-stone-300"
             />
             <div class="text-stone-300">"Here's a timeline of my journey."</div>
@@ -33,9 +33,21 @@ fn ExperiencePageMainContent() -> impl IntoView {
     view! {
         <div class="mt-20 space-y-10">
             <ExperienceTile
+                company="General Dynamics Mission Systems".to_string()
+                title="Software Engineer".to_string()
+                date="September 2025 - Present".to_string()
+                bullets={vec![
+                    "Develop embedded C software on Zephyr RTOS for Army training systems.".to_string(),
+                    "Support player units and MILES detectors for tactical engagement tracking.".to_string(),
+                    "Work across GPS, NFC, LTE, and BLE subsystems.".to_string()
+                ]}
+                link="https://gdmissionsystems.com/".to_string()
+            />
+
+            <ExperienceTile
                 company="Orbit International Corporation".to_string()
                 title="Junior Embedded Systems Design Engineer".to_string()
-                date="May 2023 - Present".to_string()
+                date="May 2023 - September 2025".to_string()
                 bullets={vec![
                     "Lead the software development effort for multiple projects including new and legacy products.".to_string(),
                     "Spearheaded modernization efforts by integrating advanced software development workflows into engineering projects.".to_string(),
