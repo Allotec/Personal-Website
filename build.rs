@@ -1,20 +1,24 @@
 use std::process::Command;
 
 fn main() {
-    Command::new("pdflatex")
+    let status = Command::new("pdflatex")
         .arg("./Matthew_Champagne_Resume.tex")
         .status()
         .expect("Failed to execute pdflatex command");
 
-    Command::new("sed")
-        .arg(r"'/\/ID \[/d'")
-        .arg("./Matthew_Champagne_Resume.pdf")
-        .arg(">")
-        .arg("public/docs/Matthew_Champagne_Resume.pdf")
-        .status()
-        .expect("Failed to execute sed command");
+    if !status.success() {
+        panic!("pdflatex failed");
+    }
 
-    std::fs::copy("./release/index.html", "./release/404.html").unwrap();
+    std::fs::copy(
+        "./Matthew_Champagne_Resume.pdf",
+        "./public/docs/Matthew_Champagne_Resume.pdf",
+    )
+    .expect("Failed to copy generated resume PDF");
 
-    std::fs::remove_file("./Matthew_Champagne_Resume.pdf").unwrap();
+    std::fs::copy("./release/index.html", "./release/404.html")
+        .expect("Failed to create 404.html");
+
+    std::fs::remove_file("./Matthew_Champagne_Resume.pdf")
+        .expect("Failed to remove generated resume PDF");
 }
