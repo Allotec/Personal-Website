@@ -163,21 +163,23 @@
 \section{Work Experience}
   \vspace{3pt}
   \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {General Dynamics Mission Systems}{Orlando, FL, USA}
+      {Software Engineer}{September 2025 \textbf{--} Current}
+        \resumeItemListStart
+            \resumeItem{Develop embedded C software on Zephyr RTOS for Army training systems.}
+            \resumeItem{Support player units and MILES detectors for tactical engagement tracking.}
+            \resumeItem{Work across GPS, NFC, LTE, and BLE subsystems.}
+        \resumeItemListEnd
+
     \resumeSubheading
       {Orbit International Corporation}{Hauppauge, NY, USA}
-      {Junior Embedded Systems Design Engineer}{May 2023 \textbf{--} Current}
+      {Junior Embedded Systems Design Engineer}{Jan 2023 \textbf{--} September 2025}
         \resumeItemListStart
             \resumeItem{Lead the software development effort for multiple projects including new and legacy products.}
             \resumeItem{Setup, documented, and maintained a self-hosted GitLab server for Orbit Instrument's Engineering department.}
             \resumeItem{Helped migrate our sister company from SVN to Gitlab. }
-        \resumeItemListEnd
-    
-    \resumeSubheading
-      {Orbit International Corporation}{Hauppauge, NY, USA}
-      {Embedded Systems Design Engineer Intern}{Jan 2023 \textbf{--} May 2023}
-        \resumeItemListStart
-            \resumeItem{Constructed a trackball demo unit to test the feasibility of using an optical sensor for our trackball products. }
-            \resumeItem{Learned how to use Orbit's product lifecycle software, schematic software, and product release process. }
         \resumeItemListEnd
     
   \resumeSubHeadingListEnd
@@ -186,43 +188,40 @@
 \section{Work Projects}
     \vspace{3pt}
     \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+        {\textbf{General Dynamics WTA/UAS Training System (C on Zephyr RTOS (nordic))} }{}
+          \resumeItemListStart
+            \resumeItem{Develop embedded software in C using Zephyr RTOS for WTA/UAS devices used in United States Army training exercises to track personnel and unmanned systems during tactical engagements.}
+            \resumeItem{Implemented software for player units and MILES detectors, integrating GPS, NFC, LTE, and BLE to support field-ready tracking, connectivity, and device interaction.}
+          \resumeItemListEnd
       
       \resumeProjectHeading
         {\textbf{Rockwell Collins Simulated Control Display Unit (SCDU) and Supporting Software (C++ and Rust)} }{}
           \resumeItemListStart
-            \resumeItem{The SCDU is a smart display capable of displaying graphics, text, and reporting back user input using a custom protocol over UDP. }
-            \resumeItem{To make the SCDU, drivers were written to control backlighting, scan for key presses, and perform end-user firmware upgrades via the serial port using Ymodem. }
-            \resumeItem{To support the customer and production, a cross platform desktop application was written to light balance the keypad, perform firmware upgrades, and sanitize the unit over USB.}
+            \resumeItem{Developed software for a smart display unit that rendered graphics and text, reported user input over a custom UDP protocol, and supported keypad backlighting and key scanning.}
+            \resumeItem{Implemented serial firmware upgrades using Ymodem and built a cross-platform desktop tool for keypad light balancing, firmware updates, and USB sanitization.}
           \resumeItemListEnd
       
       \resumeProjectHeading
-        {\textbf{BAE Systems Upgraded Radio Control Unit (uRCU) Software Upgrade (C On AVR)} }{}
+        {\textbf{BAE Systems Upgraded Radio Control Unit (uRCU) Software Upgrade (C on AVR)} }{}
           \resumeItemListStart
-            \resumeItem{The uRCU is a smart display unit that is responsible for communicating with BAE's transponder and providing feedback to the helicopter pilot. }
-            \resumeItem{This program was under DO-178C rules therefore I was given requirements that I had to implement, test, trace, and document. }
-            \resumeItem{The existing codebase lacked source control, so I wrote a Python script to gather all old versions and import them into a Git repository. }
+            \resumeItem{Implemented and tested DO-178C requirements for a smart display unit that communicated with a BAE transponder and provided pilot feedback.}
+            \resumeItem{Recovered a legacy codebase without source control by scripting historical version collection and importing the results into Git.}
           \resumeItemListEnd
 
       \resumeProjectHeading
         {\textbf{BAE Systems Slim Data Entry Device (DED) (Rust on STM32)} }{}
           \resumeItemListStart
-            \resumeItem{The Slim DED is a VT100 terminal emulator that recieves characters / ANSI escape codes over the serial port and renders the data onto the grid. }
-            \resumeItem{Additionally, the unit had to support end-user firmware upgrades, touch screen input, and contrast adjustment. }
-            \resumeItem{Wrote the main application, bootloader, and cross platform desktop testing application. }
+            \resumeItem{Developed the main application for a Rust-based STM32 VT100 terminal emulator that rendered serial text and ANSI escape sequences to a display grid.}
+            \resumeItem{Implemented firmware upgrade, touch screen input, and contrast control features, and built a cross-platform desktop test application.}
           \resumeItemListEnd
 
       \resumeProjectHeading
         {\textbf{OIL \href{https://govtribe.com/file/government-file/fy22c5isrcmoss-victory-spec-doc-v1-9-dist-a-a787-dot-pdf}{VICTORY Bus} Prototype (C++ on Linux)} }{}
           \resumeItemListStart
-            \resumeItem{The OIL Prototype unit was a touch screen device that used GPS data from the 
-              \href{https://govtribe.com/file/government-file/fy22c5isrcmoss-victory-spec-doc-v1-9-dist-a-a787-dot-pdf}{VICTORY Bus} 
-              to determine the current location on an open source mapping application. }
-            \resumeItem{Wrote a reusable and modular 
-              \href{https://govtribe.com/file/government-file/fy22c5isrcmoss-victory-spec-doc-v1-9-dist-a-a787-dot-pdf}{VICTORY Bus} 
-              Library. }
-            \resumeItem{Wrote a Systemd service that monitored the network for 
-              \href{https://govtribe.com/file/government-file/fy22c5isrcmoss-victory-spec-doc-v1-9-dist-a-a787-dot-pdf}{VICTORY Bus} 
-              packets to send them over to the open source map application. }
+            \resumeItem{Developed a Linux-based touch screen prototype that used \href{https://govtribe.com/file/government-file/fy22c5isrcmoss-victory-spec-doc-v1-9-dist-a-a787-dot-pdf}{VICTORY Bus} GPS data to drive an open source mapping application.}
+            \resumeItem{Built a modular \href{https://govtribe.com/file/government-file/fy22c5isrcmoss-victory-spec-doc-v1-9-dist-a-a787-dot-pdf}{VICTORY Bus} library and a systemd service to monitor network traffic and forward relevant packets to the mapping stack.}
           \resumeItemListEnd
       
     \resumeSubHeadingListEnd
@@ -233,9 +232,9 @@
   \vspace{2pt}
   \resumeSubHeadingListStart
     \small{\item{
-        \textbf{Programming:}{ C, C++, Java, Python, Verilog, SystemVerilog, VHDL, SystemC, Rust, Latex} \\ \vspace{3pt}
-        
-        \textbf{Technologies:}{ Linux, GitLab, STM32, CMake, AVR, GCC, Networking} \\ \vspace{3pt}
+        \textbf{Programming:}{ C, C++, Java, Python, SystemVerilog, VHDL, SystemC, Rust, Latex} \\ \vspace{3pt}
+
+        \textbf{Technologies:}{ Linux, GitLab, STM32, Nordic, CMake, AVR, GCC, Networking, RTOS, Zephyr} \\ \vspace{3pt}
     }}
   \resumeSubHeadingListEnd
 
