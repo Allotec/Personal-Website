@@ -16,9 +16,6 @@ fn main() {
     )
     .expect("Failed to copy generated resume PDF");
 
-    std::fs::copy("./release/index.html", "./release/404.html")
-        .expect("Failed to create 404.html");
-
     std::fs::remove_file("./Matthew_Champagne_Resume.pdf")
         .expect("Failed to remove generated resume PDF");
 }
