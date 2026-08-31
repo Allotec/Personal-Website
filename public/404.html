@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Page Not Found - Matthew Champagne</title>
+    <script>
+      (function () {
+        try {
+          sessionStorage.setItem(
+            "spa-redirect",
+            location.pathname + location.search + location.hash,
+          );
+        } catch (_) {
+          // Ignore storage errors and proceed with the redirect.
+        }
+        location.replace("/");
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to the <a href="/">home page</a>&hellip;</p>
+  </body>
+</html>

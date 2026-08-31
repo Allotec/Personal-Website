@@ -2,6 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+      (function () {
+        try {
+          var redirect = sessionStorage.getItem("spa-redirect");
+          sessionStorage.removeItem("spa-redirect");
+          if (redirect && redirect.charAt(0) === "/") {
+            history.replaceState(null, "", redirect);
+          }
+        } catch (_) {
+          // Ignore storage/history errors and continue loading normally.
+        }
+      })();
+    </script>
     <link data-trunk rel="rust" data-wasm-opt="z" />
     <link
       data-trunk
@@ -13,6 +26,7 @@
     <link data-trunk rel="copy-dir" href="/public/images" />
     <link data-trunk rel="copy-dir" href="/public/docs" />
     <link data-trunk rel="copy-file" href="/public/CNAME" />
+    <link data-trunk rel="copy-file" href="/public/404.html" />
 
     <title>Home - Matthew Champagne</title>
 

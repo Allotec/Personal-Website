@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Page Not Found - Matthew Champagne</title>
+    <script>
+      // GitHub Pages serves this file for any URL that doesn't match a
+      // real file (e.g. a direct link to /tools). Stash the requested
+      // path and send the browser to the app shell, which restores it
+      // (see index.html) so the client-side router can resolve it.
+      (function () {
+        try {
+          sessionStorage.setItem(
+            "spa-redirect",
+            location.pathname + location.search + location.hash
+          );
+        } catch (_) {
+          // Ignore storage errors and proceed with the redirect.
+        }
+        location.replace("/");
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to the <a href="/">home page</a>&hellip;</p>
+  </body>
+</html>
