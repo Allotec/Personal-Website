@@ -7,10 +7,14 @@
       // 404.html), so the client-side router can resolve it. Runs before
       // the app's module script, which is always deferred by the browser.
       (function () {
-        var redirect = sessionStorage.getItem("spa-redirect");
-        sessionStorage.removeItem("spa-redirect");
-        if (redirect) {
-          history.replaceState(null, "", redirect);
+        try {
+          var redirect = sessionStorage.getItem("spa-redirect");
+          sessionStorage.removeItem("spa-redirect");
+          if (redirect && redirect.charAt(0) === "/") {
+            history.replaceState(null, "", redirect);
+          }
+        } catch (_) {
+          // Ignore storage/history errors and continue loading normally.
         }
       })();
     </script>
