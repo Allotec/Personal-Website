@@ -11,7 +11,7 @@ dependencies = ["clean-dist"]
 command = "trunk"
 args = ["serve", "--open"]
 
-[tasks.trunk-build-release]
+[tasks.run-release]
 dependencies = ["clean-release"]
 command = "trunk"
 args = [
@@ -23,16 +23,6 @@ args = [
     "--public-url",
     "/",
 ]
-
-# GitHub Pages has no server-side rewrite rules, so it serves `404.html`
-# whenever a direct link (e.g. www.allotec.dev/tools) doesn't match a real
-# file. Copying the built `index.html` to `404.html` makes GitHub Pages
-# fall back to the SPA shell, which then lets the client-side router
-# resolve the requested path.
-[tasks.run-release]
-dependencies = ["trunk-build-release"]
-script_runner = "@shell"
-script = "cp release/index.html release/404.html"
 
 [tasks.update-pages]
 command = "git"

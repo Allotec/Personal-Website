@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+      // Restores the real path after the "404.html" redirect (see
+      // 404.html), so the client-side router can resolve it. Runs before
+      // the app's module script, which is always deferred by the browser.
+      (function () {
+        var redirect = sessionStorage.getItem("spa-redirect");
+        sessionStorage.removeItem("spa-redirect");
+        if (redirect) {
+          history.replaceState(null, "", redirect);
+        }
+      })();
+    </script>
     <link data-trunk rel="rust" data-wasm-opt="z" />
     <link
       data-trunk
@@ -13,6 +25,7 @@
     <link data-trunk rel="copy-dir" href="/public/images" />
     <link data-trunk rel="copy-dir" href="/public/docs" />
     <link data-trunk rel="copy-file" href="/public/CNAME" />
+    <link data-trunk rel="copy-file" href="/public/404.html" />
 
     <title>Home - Matthew Champagne</title>
 
