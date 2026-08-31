@@ -17,7 +17,9 @@ use leptos::prelude::*;
 use leptos_meta::*;
 use leptos_router::{
     components::{Route, Router, Routes},
+    hooks::use_navigate,
     path,
+    NavigateOptions,
 };
 use project::ProjectPageContent;
 use sidebar::SideBar;
@@ -34,7 +36,7 @@ pub fn App() -> impl IntoView {
 
     view! {
         <Router>
-            <Routes fallback=|| PageNotFound>
+            <Routes fallback=|| PageNotFound()>
                 <Route path=path!("/") view=HomePage/>
                 <Route path=path!("/experience") view=ExperiencePage/>
                 <Route path=path!("/projects") view=ProjectPage/>
@@ -48,6 +50,12 @@ pub fn App() -> impl IntoView {
 
 #[component]
 fn PageNotFound() -> impl IntoView {
+    let navigate = use_navigate();
+
+    Effect::new(move |_| {
+        navigate("/", NavigateOptions::default());
+    });
+
     view! {
         <div class="flex flex-1 flex-col items-center justify-center min-h-screen bg-[rgb(00,00,09)] text-gray-200">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" class="mb-6">
@@ -56,7 +64,7 @@ fn PageNotFound() -> impl IntoView {
             </svg>
             <h1 class="text-4xl font-bold text-red-500 mb-2">Page Not Found</h1>
             <p class="text-white-500 text-lg mb-4 text-center">
-                Oops! The page you are looking for does not exist.
+                Oops! The page you are looking for does not exist. Redirecting you home...
             </p>
             <a href="/" class="text-blue-400 hover:underline text-base">Go back home</a>
         </div>
