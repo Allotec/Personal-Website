@@ -8,11 +8,17 @@
       // real file (e.g. a direct link to /tools). Stash the requested
       // path and send the browser to the app shell, which restores it
       // (see index.html) so the client-side router can resolve it.
-      sessionStorage.setItem(
-        "spa-redirect",
-        location.pathname + location.search + location.hash,
-      );
-      location.replace("/");
+      (function () {
+        try {
+          sessionStorage.setItem(
+            "spa-redirect",
+            location.pathname + location.search + location.hash
+          );
+        } catch (_) {
+          // Ignore storage errors and proceed with the redirect.
+        }
+        location.replace("/");
+      })();
     </script>
   </head>
   <body>
